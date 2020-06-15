@@ -1,8 +1,4 @@
-# gulp-setup
-my basic setup for web development
+# Roborock Comparison
 
 
-Copy files and subfolders (not an entire gulp setup folder). Then you can create a new git repo.
-Copy .gitignore.
-
-Run gulp watch.
+Vacuums comparison webpage for polish distribution of Roborock devices.
