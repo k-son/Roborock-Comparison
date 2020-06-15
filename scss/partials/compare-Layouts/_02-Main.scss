@@ -146,36 +146,12 @@
       @media only screen and (max-width: $bp-medium) {
         width: 12rem;
       }
-
-      &--1 {
-      
-      }
-
-      &--2 {
-
-      }
-
-      &--3 {
-          
-      }
     }
 
     &__h2 {
       font-size: 2.4rem;
       text-align: center;
       margin-bottom: 5.6rem;
-
-      &--1 {
-
-      }
-
-      &--2 {
-
-      }
-
-      &--3 {
-        
-      }
     }
 
     &__more-btn {
@@ -187,16 +163,17 @@
       color: #fff;
       background-color: var(--color-roborock);
 
-      &--1 {
-
+      &:hover,
+      &:focus {
+        background-color: hsl(351, 93%, 35%);
       }
 
-      &--2 {
-
+      &:focus {
+        outline: none;
       }
 
-      &--3 {
-        
+      &:active {
+        background-color: hsl(351, 93%, 65%);
       }
     }
   }

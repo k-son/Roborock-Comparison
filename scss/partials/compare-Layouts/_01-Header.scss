@@ -42,6 +42,10 @@
         outline: none;
       }
 
+      &:active {
+        color: hsl(351, 93%, 65%);
+      }
+
       & span {
         font-weight: 500;
       }
