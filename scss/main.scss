@@ -2,8 +2,8 @@
 @import "partials/base";
 @import "partials/variables";
 @import "partials/typography";
-@import "partials/layout";
 @import "partials/mixins";
-@import "partials/components";
+@import "partials/utilities";
 
 // compare Layouts
+@import "partials/compare-Layouts/01-Header";
