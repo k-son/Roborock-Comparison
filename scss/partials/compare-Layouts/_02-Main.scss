@@ -1,5 +1,7 @@
 .comp {
 
+  $section-horizontal-padding: 0 2rem;
+
   &__main-container {
     position: relative;
     display: grid;
@@ -20,6 +22,7 @@
     column-gap: 3.2rem;
     align-items: center;
     height: 8rem;
+    padding: $section-horizontal-padding;
     margin-bottom: 4rem;
     box-shadow: 0 4px 10px -4px rgba(0, 0, 0, .15);
     z-index: 9;
@@ -93,7 +96,8 @@
         margin-bottom: 1.6rem;
       }
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: #f4f4f4;
       }
 
@@ -118,6 +122,7 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 3.2rem;
     column-gap: 3.2rem;
+    padding: $section-horizontal-padding;
 
     &__device {
       display: flex;
@@ -181,6 +186,7 @@
   /// ADVANCED FEATURES
   &__advanced {
     grid-column: 1 / 5;
+    padding: $section-horizontal-padding;
   }
 
   &__h3 {
@@ -305,6 +311,10 @@
 
 
 // js classes
+.rotateChevron {
+  transform: rotate(-225deg) !important;
+}
+
 .comp__grid-column-2 {
   grid-column: 2 / 3;
 }
