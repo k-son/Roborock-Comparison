@@ -16,10 +16,10 @@ let menu_3_ListButtons;
 
 //const volumeFeature = document.getElementById('volume');
 
-const featuresColumn_1 = document.querySelectorAll('comp__feature-exists--1');
-const featuresColumn_2 = document.querySelectorAll('comp__feature-exists--2');
-const featuresColumn_3 = document.querySelectorAll('comp__feature-exists--3');
-
+const featuresColumn_1 = document.querySelectorAll('.comp__feature-exists--1');
+const featuresColumn_2 = document.querySelectorAll('.comp__feature-exists--2');
+const featuresColumn_3 = document.querySelectorAll('.comp__feature-exists--3');
+const featuresColumnArray = [featuresColumn_1, featuresColumn_2, featuresColumn_3];
 
 
 //// MAIN SCRIPTS
@@ -68,15 +68,18 @@ function buildMenus(obj) {
   menu_3_ListButtons = document.querySelectorAll('.comp__menu--3 .comp__menu__btn');
 
   menu_1_ListButtons.forEach(el => {
-    el.addEventListener('click', selectVacuum); // maybe selectVacuum(1) and add later 1 to ids like id="volume-1" cos to nie dziala
+    el.addEventListener('click', selectVacuum);
+    el.addEventListener('click', handleFeatures_1);
   })
 
   menu_2_ListButtons.forEach(el => {
     el.addEventListener('click', selectVacuum);
+    el.addEventListener('click', handleFeatures_2);
   })
   
   menu_3_ListButtons.forEach(el => {
     el.addEventListener('click', selectVacuum);
+    el.addEventListener('click', handleFeatures_3);
   })
 
 }
@@ -112,7 +115,7 @@ menus.forEach(el => {
 // ** Menu list buttons
 // select vacuum and add approval mark
 
-function selectVacuum(abc) {
+function selectVacuum(arg) {
   // remove any approval mark
   const listItems = this.parentElement.parentElement.children;
   Array.from(listItems).forEach(elem => elem.firstElementChild.firstElementChild.classList.add('displayNone'));
@@ -143,7 +146,21 @@ function selectVacuum(abc) {
   // a później usuwamy klasę 'hideCompareFeature' z tych ficzerów które w tym egzemplarzu istnieją (tu wybieramy je po id chyba, id które ma końcówkę --1)
   // ficzery tekstowe wypełniamy tekstem nowym
   
+  
 
+}
+
+// do rozbudowy patrz wyżej instrukcje
+function handleFeatures_1() {
+  featuresColumn_1.forEach(el => el.classList.remove('hideCompareFeature'));
+}
+
+function handleFeatures_2() {
+  featuresColumn_2.forEach(el => el.classList.remove('hideCompareFeature'));
+}
+
+function handleFeatures_3() {
+  featuresColumn_3.forEach(el => el.classList.remove('hideCompareFeature'));
 }
 
 
