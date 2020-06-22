@@ -87,7 +87,7 @@
     },
     {
       "name": "Roborock S5",
-      "image": "./img/s.png",
+      "image": "./img/s5.png",
       "webpage": "https://roborock-poland.pl/s5.html",
       "navigation": "LDS",
       "algorithm": "SLAM",
