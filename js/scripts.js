@@ -10,16 +10,44 @@ const questionMarks = document.querySelectorAll('.comp__feature-title__question-
 
 let devices; // vacuum objects from json file
 
+// tu a moze w funkcji je zadeklarowac?
 let menu_1_ListButtons;
 let menu_2_ListButtons;
 let menu_3_ListButtons;
 
-//const volumeFeature = document.getElementById('volume');
+let selectedVacuumObject; // to store just selected (from menu list) vacuum object
+
 
 const featuresColumn_1 = document.querySelectorAll('.comp__feature-exists--1');
 const featuresColumn_2 = document.querySelectorAll('.comp__feature-exists--2');
 const featuresColumn_3 = document.querySelectorAll('.comp__feature-exists--3');
-const featuresColumnArray = [featuresColumn_1, featuresColumn_2, featuresColumn_3];
+//const featuresColumnArray = [featuresColumn_1, featuresColumn_2, featuresColumn_3];
+
+// features' fields
+const battery_1 = document.getElementById('battery-1');
+const battery_2 = document.getElementById('battery-2');
+const battery_3 = document.getElementById('battery-3');
+const battery = [battery_1, battery_2, battery_3];
+
+const volume_1 = document.getElementById('volume-1');
+const volume_2 = document.getElementById('volume-2');
+const volume_3 = document.getElementById('volume-3');
+const volume = [volume_1, volume_2, volume_3];
+
+const area_1 = document.getElementById('area-1');
+const area_2 = document.getElementById('area-2');
+const area_3 = document.getElementById('area-3');
+const area = [area_1, area_2, area_3];
+
+const power_1 = document.getElementById('power-1');
+const power_2 = document.getElementById('power-2');
+const power_3 = document.getElementById('power-3');
+const power = [power_1, power_2, power_3];
+
+const dustbin_1 = document.getElementById('dustbin-1');
+const dustbin_2 = document.getElementById('dustbin-2');
+const dustbin_3 = document.getElementById('dustbin-3');
+const dustbin = [dustbin_1, dustbin_2, dustbin_3];
 
 
 //// MAIN SCRIPTS
@@ -33,12 +61,12 @@ request.send();
 
 
 request.onload = function() {
-  roborockCompareObject = request.response;
+  const roborockCompareObject = request.response;
   buildMenus(roborockCompareObject);
 }
 
 function buildMenus(obj) {
-  devices = obj.devices; // take a glance at the json file
+  devices = obj.devices; // devices? - take a glance at the json file
 
   // build menus
   for (let j=0; j<menuLists.length; j++) {
@@ -115,7 +143,7 @@ menus.forEach(el => {
 // ** Menu list buttons
 // select vacuum and add approval mark
 
-function selectVacuum(arg) {
+function selectVacuum() {
   // remove any approval mark
   const listItems = this.parentElement.parentElement.children;
   Array.from(listItems).forEach(elem => elem.firstElementChild.firstElementChild.classList.add('displayNone'));
@@ -128,7 +156,8 @@ function selectVacuum(arg) {
   this.parentElement.parentElement.previousElementSibling.firstChild.textContent = vacuumName;
 
   // find selected object
-  const selectedVacuumObject = devices.filter(el => el.name === vacuumName);
+  selectedVacuumObject = devices.filter(el => el.name === vacuumName);
+
 
   // populate features
   // clear previous value first 
@@ -153,15 +182,29 @@ function selectVacuum(arg) {
 // do rozbudowy patrz wyżej instrukcje
 function handleFeatures_1() {
   featuresColumn_1.forEach(el => el.classList.remove('hideCompareFeature'));
+  populateFeatures(0);
+
 }
 
 function handleFeatures_2() {
   featuresColumn_2.forEach(el => el.classList.remove('hideCompareFeature'));
+  populateFeatures(1);
 }
 
 function handleFeatures_3() {
   featuresColumn_3.forEach(el => el.classList.remove('hideCompareFeature'));
+  populateFeatures(2);
 }
+
+
+function populateFeatures(i) {
+  battery[i].textContent = selectedVacuumObject[0].batterycapacity;
+  volume[i].textContent = selectedVacuumObject[0].volume;
+  area[i].textContent = selectedVacuumObject[0].suitablearea;
+  power[i].textContent = selectedVacuumObject[0].ratedpower;
+  dustbin[i].textContent = selectedVacuumObject[0].dustbincapacity;
+}
+
 
 
 
