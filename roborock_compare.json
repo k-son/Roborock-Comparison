@@ -1,53 +1,94 @@
 {
   "devices": [
     {
-      "name": "Roborock S6 MaxV",
-      "adaptiveRouteAlgorithm": true,
-      "selectiveRoomCleaning": true,
-      "ldsLaserNavigationLDSLaserNavigation": true,
-      "volume": 67
+      "name": "Roborock E4",
+      "navigation": "Interial guidance",
+      "algorithm": "Interial guidance",
+      "volume(dB)": 66,
+      "battery-capacity(mAh)": 5200,
+      "suitable-area(m2)": 200,
+      "rated-power(W)": 58,
+      "dustbin-capacity(ml)": 650,
+      "suction(Pa)": 2000,
+      "runtime(min)": 200,
+      "room-selective-cleaning": false,
+      "intelligent-zoning": false,
+      "filter-detection": true
     },
     {
-      "name": "Roborock E4",
-      "adaptiveRouteAlgorithm": false,
-      "selectiveRoomCleaning": false,
-      "ldsLaserNavigationLDSLaserNavigation": false,
-      "volume": 69
+      "name": "Roborock S6 MaxV",
+      "navigation": "Dual-CAM + LDS",
+      "algorithm": "SLAM",
+      "volume(dB)": 64,
+      "battery-capacity(mAh)": 5200,
+      "suitable-area(m2)": 250,
+      "rated-power(W)": 66,
+      "dustbin-capacity(ml)": 460,
+      "suction(Pa)": 2500,
+      "runtime(min)": 180,
+      "room-selective-cleaning": true,
+      "intelligent-zoning": true,
+      "filter-detection": true
     },
     {
       "name": "Roborock S6",
-      "adaptiveRouteAlgorithm": true,
-      "selectiveRoomCleaning": false,
-      "ldsLaserNavigationLDSLaserNavigation": true,
-      "volume": 57
-    },
-    {
-      "name": "Roborock S6 Pure",
-      "adaptiveRouteAlgorithm": false,
-      "selectiveRoomCleaning": true,
-      "ldsLaserNavigationLDSLaserNavigation": true,
-      "volume": 167
-    },
-    {
-      "name": "Roborock H6",
-      "adaptiveRouteAlgorithm": false,
-      "selectiveRoomCleaning": true,
-      "ldsLaserNavigationLDSLaserNavigation": false,
-      "volume": 17
-    },
-    {
-      "name": "Roborock S5",
-      "adaptiveRouteAlgorithm": true,
-      "selectiveRoomCleaning": true,
-      "ldsLaserNavigationLDSLaserNavigation": true,
-      "volume": 77
+      "navigation": "LDS",
+      "algorithm": "SLAM",
+      "volume(dB)": 64,
+      "battery-capacity(mAh)": 5200,
+      "suitable-area(m2)": 250,
+      "rated-power(W)": 58,
+      "dustbin-capacity(ml)": 480,
+      "suction(Pa)": 2000,
+      "runtime(min)": 150,
+      "room-selective-cleaning": true,
+      "intelligent-zoning": true,
+      "filter-detection": true
     },
     {
       "name": "Roborock S5 Max",
-      "adaptiveRouteAlgorithm": true,
-      "selectiveRoomCleaning": false,
-      "ldsLaserNavigationLDSLaserNavigation": false,
-      "volume": 37
+      "navigation": "LDS",
+      "algorithm": "SLAM",
+      "volume(dB)": 67,
+      "battery-capacity(mAh)": 5200,
+      "suitable-area(m2)": 250,
+      "rated-power(W)": 58,
+      "dustbin-capacity(ml)": 460,
+      "suction(Pa)": 2000,
+      "runtime(min)": 150,
+      "room-selective-cleaning": true,
+      "intelligent-zoning": true,
+      "filter-detection": true
+    },
+    {
+      "name": "Roborock S6 Pure",
+      "navigation": "LDS",
+      "algorithm": "SLAM",
+      "volume(dB)": 67,
+      "battery-capacity(mAh)": 5200,
+      "suitable-area(m2)": 250,
+      "rated-power(W)": 58,
+      "dustbin-capacity(ml)": 460,
+      "suction(Pa)": 2000,
+      "runtime(min)": 150,
+      "room-selective-cleaning": true,
+      "intelligent-zoning": true,
+      "filter-detection": true
+    },
+    {
+      "name": "Roborock S5",
+      "navigation": "LDS",
+      "algorithm": "SLAM",
+      "volume(dB)": 69,
+      "battery-capacity(mAh)": 5200,
+      "suitable-area(m2)": 250,
+      "rated-power(W)": 58,
+      "dustbin-capacity(ml)": 480,
+      "suction(Pa)": 2000,
+      "runtime(min)": 150,
+      "room-selective-cleaning": true,
+      "intelligent-zoning": false,
+      "filter-detection": true
     }
   ]
 }
