@@ -1,4 +1,5 @@
 //// VARIABLES
+
 const menus = document.querySelectorAll('.comp__menu');
 const menuLists = document.querySelectorAll('.comp__menu__list');
 const menuTopButtons = document.querySelectorAll('.comp__menu__top-btn');
@@ -116,24 +117,24 @@ function buildMenus(obj) {
   devices = obj.devices; // devices array containing all vacuums objects, retrived from roborock_compare.json
 
   // build menus
-  for (let j=0; j<menuLists.length; j++) {
-    for (let i=0; i<devices.length; i++) {
+  for (let i=0; i<menuLists.length; i++) {
+    for (let j=0; j<devices.length; j++) {
 
       const listItem = document.createElement('li');
       listItem.classList.add('comp__menu__list-item');
-  
+
       const button = document.createElement('button');
       button.classList.add('comp__menu__btn');
-      button.textContent = devices[i].name;
-  
+      button.textContent = devices[j].name;
+
       const span = document.createElement('span');
       span.classList.add('comp__selected-vacuum');
       span.classList.add('displayNone');
-  
+
       button.appendChild(span);
       listItem.appendChild(button);
-  
-      menuLists[j].appendChild(listItem);
+
+      menuLists[i].appendChild(listItem);
     }
   }
 
