@@ -49,6 +49,31 @@ const dustbin_2 = document.getElementById('dustbin-2');
 const dustbin_3 = document.getElementById('dustbin-3');
 const dustbin = [dustbin_1, dustbin_2, dustbin_3];
 
+const suction_1 = document.getElementById('suction-1');
+const suction_2 = document.getElementById('suction-2');
+const suction_3 = document.getElementById('suction-3');
+const suction = [suction_1, suction_2, suction_3];
+
+const runtime_1 = document.getElementById('runtime-1');
+const runtime_2 = document.getElementById('runtime-2');
+const runtime_3 = document.getElementById('runtime-3');
+const runtime = [runtime_1, runtime_2, runtime_3];
+
+const roomSelectiveCleaning_1 = document.getElementById('roomSelectiveCleaning--1');
+const roomSelectiveCleaning_2 = document.getElementById('roomSelectiveCleaning--2');
+const roomSelectiveCleaning_3 = document.getElementById('roomSelectiveCleaning--3');
+const roomSelectiveCleaning = [roomSelectiveCleaning_1, roomSelectiveCleaning_2, roomSelectiveCleaning_3];
+
+const intelligentZoning_1 = document.getElementById('intelligentZoning--1');
+const intelligentZoning_2 = document.getElementById('intelligentZoning--2');
+const intelligentZoning_3 = document.getElementById('intelligentZoning--3');
+const intelligentZoning = [intelligentZoning_1, intelligentZoning_2, intelligentZoning_3];
+
+const filterDetection_1 = document.getElementById('filterDetection--1');
+const filterDetection_2 = document.getElementById('filterDetection--2');
+const filterDetection_3 = document.getElementById('filterDetection--3');
+const filterDetection = [filterDetection_1, filterDetection_2, filterDetection_3];
+
 
 //// MAIN SCRIPTS
 
@@ -64,6 +89,7 @@ request.onload = function() {
   const roborockCompareObject = request.response;
   buildMenus(roborockCompareObject);
 }
+
 
 function buildMenus(obj) {
   devices = obj.devices; // devices? - take a glance at the json file
@@ -109,7 +135,6 @@ function buildMenus(obj) {
     el.addEventListener('click', selectVacuum);
     el.addEventListener('click', handleFeatures_3);
   })
-
 }
 
 
@@ -181,29 +206,49 @@ function selectVacuum() {
 
 // do rozbudowy patrz wyżej instrukcje
 function handleFeatures_1() {
-  featuresColumn_1.forEach(el => el.classList.remove('hideCompareFeature'));
+  featuresColumn_1.forEach(el => el.classList.add('hideCompareFeature'));
+  ifFeaturesExist(0);
   populateFeatures(0);
-
 }
 
 function handleFeatures_2() {
-  featuresColumn_2.forEach(el => el.classList.remove('hideCompareFeature'));
+  featuresColumn_2.forEach(el => el.classList.add('hideCompareFeature'));
+  ifFeaturesExist(1);
   populateFeatures(1);
 }
 
 function handleFeatures_3() {
-  featuresColumn_3.forEach(el => el.classList.remove('hideCompareFeature'));
+  featuresColumn_3.forEach(el => el.classList.add('hideCompareFeature'));
+  ifFeaturesExist(2);
   populateFeatures(2);
 }
 
 
+// show approval mark if vacuum has that feature
+function ifFeaturesExist(i) {
+  if (selectedVacuumObject[0].roomselectivecleaning === true) {
+    roomSelectiveCleaning[i].classList.remove('hideCompareFeature');
+  }
+  if (selectedVacuumObject[0].roomselectivecleaning === true) {
+    intelligentZoning[i].classList.remove('hideCompareFeature');
+  }
+  if (selectedVacuumObject[0].roomselectivecleaning === true) {
+    filterDetection[i].classList.remove('hideCompareFeature');
+  }
+}
+
+
+// fill with value
 function populateFeatures(i) {
   battery[i].textContent = selectedVacuumObject[0].batterycapacity;
   volume[i].textContent = selectedVacuumObject[0].volume;
   area[i].textContent = selectedVacuumObject[0].suitablearea;
   power[i].textContent = selectedVacuumObject[0].ratedpower;
   dustbin[i].textContent = selectedVacuumObject[0].dustbincapacity;
+  suction[i].textContent = selectedVacuumObject[0].suction;
+  runtime[i].textContent = selectedVacuumObject[0].runtime;
 }
+
 
 
 
