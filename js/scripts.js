@@ -97,13 +97,13 @@ request.onload = function() {
 
   buildMenus(roborockCompareObject);
 
-  // show vacuum name in menu top button
+  // in menu top button show vacuum name and, next to it, approval mark
   for (let i=0; i<menuTopButtons.length; i++) {
     menuTopButtons[i].firstChild.textContent = devices[i].name;
     menuTopButtons[i].nextElementSibling.children[i].firstElementChild.lastElementChild.classList.remove('displayNone');
   }
 
-  // show features
+  // show vacuum features
   for (let i=0; i<=2; i++) {
     showSelectedVacuum(i, devices[i]);
     ifFeaturesExist(i, devices[i]);
