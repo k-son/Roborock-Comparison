@@ -1,5 +1,4 @@
 //// VARIABLES
-
 const menus = document.querySelectorAll('.comp__menu');
 const menuLists = document.querySelectorAll('.comp__menu__list');
 const menuTopButtons = document.querySelectorAll('.comp__menu__top-btn');
@@ -10,20 +9,28 @@ const questionMarks = document.querySelectorAll('.comp__feature-title__question-
 
 let devices; // vacuum objects from json file
 
-// tu a moze w funkcji je zadeklarowac?
-let menu_1_ListButtons;
-let menu_2_ListButtons;
-let menu_3_ListButtons;
-
 let selectedVacuumObject; // to store just selected (from menu list) vacuum object
-
 
 const featuresColumn_1 = document.querySelectorAll('.comp__feature-exists--1');
 const featuresColumn_2 = document.querySelectorAll('.comp__feature-exists--2');
 const featuresColumn_3 = document.querySelectorAll('.comp__feature-exists--3');
-//const featuresColumnArray = [featuresColumn_1, featuresColumn_2, featuresColumn_3];
 
 // features' fields
+const image_1 = document.getElementById('comp__vacuums__image--1');
+const image_2 = document.getElementById('comp__vacuums__image--2');
+const image_3 = document.getElementById('comp__vacuums__image--3');
+const image = [image_1, image_2, image_3];
+
+const vacName_1 = document.getElementById('comp__vacuums__h2--1');
+const vacName_2 = document.getElementById('comp__vacuums__h2--2');
+const vacName_3 = document.getElementById('comp__vacuums__h2--3');
+const vacName = [vacName_1, vacName_2, vacName_3];
+
+const linkURL_1 = document.getElementById('comp__vacuums__more-btn--1');
+const linkURL_2 = document.getElementById('comp__vacuums__more-btn--2');
+const linkURL_3 = document.getElementById('comp__vacuums__more-btn--3');
+const linkURL = [linkURL_1, linkURL_2, linkURL_3];
+
 const battery_1 = document.getElementById('battery-1');
 const battery_2 = document.getElementById('battery-2');
 const battery_3 = document.getElementById('battery-3');
@@ -87,12 +94,26 @@ request.send();
 
 request.onload = function() {
   const roborockCompareObject = request.response;
+
   buildMenus(roborockCompareObject);
+
+  // show vacuum name in menu top button
+  for (let i=0; i<menuTopButtons.length; i++) {
+    menuTopButtons[i].firstChild.textContent = devices[i].name;
+    menuTopButtons[i].nextElementSibling.children[i].firstElementChild.lastElementChild.classList.remove('displayNone');
+  }
+
+  // show features
+  for (let i=0; i<=2; i++) {
+    showSelectedVacuum(i, devices[i]);
+    ifFeaturesExist(i, devices[i]);
+    populateFeatures(i, devices[i]);
+  }
 }
 
 
 function buildMenus(obj) {
-  devices = obj.devices; // devices? - take a glance at the json file
+  devices = obj.devices; // devices array containing all vacuums objects, retrived from roborock_compare.json
 
   // build menus
   for (let j=0; j<menuLists.length; j++) {
@@ -117,9 +138,9 @@ function buildMenus(obj) {
   }
 
   // retrive menu buttons and attach event listeners to them
-  menu_1_ListButtons = document.querySelectorAll('.comp__menu--1 .comp__menu__btn');
-  menu_2_ListButtons = document.querySelectorAll('.comp__menu--2 .comp__menu__btn');
-  menu_3_ListButtons = document.querySelectorAll('.comp__menu--3 .comp__menu__btn');
+  const menu_1_ListButtons = document.querySelectorAll('.comp__menu--1 .comp__menu__btn');
+  const menu_2_ListButtons = document.querySelectorAll('.comp__menu--2 .comp__menu__btn');
+  const menu_3_ListButtons = document.querySelectorAll('.comp__menu--3 .comp__menu__btn');
 
   menu_1_ListButtons.forEach(el => {
     el.addEventListener('click', selectVacuum);
@@ -138,18 +159,83 @@ function buildMenus(obj) {
 }
 
 
-// po wyborze device wypelnic odpowiednie pola
+// ** Menu list buttons
+// select vacuum and add approval mark
+function selectVacuum() {
+  // remove any approval mark
+  const listItems = this.parentElement.parentElement.children;
+  Array.from(listItems).forEach(elem => elem.firstElementChild.firstElementChild.classList.add('displayNone'));
+  // add approval mark to selected item
+  this.firstElementChild.classList.remove('displayNone');
+  // hide menu list
+  this.parentElement.parentElement.classList.add('displayNone');
+  // in menu top button window show name of the selected vacuum 
+  const vacuumName = this.textContent;
+  this.parentElement.parentElement.previousElementSibling.firstChild.textContent = vacuumName;
 
-// wybrac device dla kazego menu przy starcie
+  // find selected object
+  selectedVacuumObject = devices.filter(el => el.name === vacuumName);
+}
 
-// w kazdym okienku inny device 
+
+function handleFeatures_1() {
+  featuresColumn_1.forEach(el => el.classList.add('hideCompareFeature'));
+  showSelectedVacuum(0, selectedVacuumObject[0]);
+  ifFeaturesExist(0, selectedVacuumObject[0]);
+  populateFeatures(0, selectedVacuumObject[0]);
+}
+
+function handleFeatures_2() {
+  featuresColumn_2.forEach(el => el.classList.add('hideCompareFeature'));
+  showSelectedVacuum(1, selectedVacuumObject[0]);
+  ifFeaturesExist(1, selectedVacuumObject[0]);
+  populateFeatures(1, selectedVacuumObject[0]);
+}
+
+function handleFeatures_3() {
+  featuresColumn_3.forEach(el => el.classList.add('hideCompareFeature'));
+  showSelectedVacuum(2, selectedVacuumObject[0]);
+  ifFeaturesExist(2, selectedVacuumObject[0]);
+  populateFeatures(2, selectedVacuumObject[0]);
+}
 
 
+// show items image, name and add link to button
+function showSelectedVacuum(col, obj) {
+  image[col].src = obj.image;
+  vacName[col].textContent = obj.name;
+  linkURL[col].href = obj.webpage;
+}
+
+
+// show approval mark if vacuum has that feature
+function ifFeaturesExist(col, obj) {
+  if (obj.roomselectivecleaning === true) {
+    roomSelectiveCleaning[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.roomselectivecleaning === true) {
+    intelligentZoning[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.roomselectivecleaning === true) {
+    filterDetection[col].classList.remove('hideCompareFeature');
+  }
+}
+
+
+// fill with value
+function populateFeatures(col, obj) {
+  battery[col].textContent = obj.batterycapacity;
+  volume[col].textContent = obj.volume;
+  area[col].textContent = obj.suitablearea;
+  power[col].textContent = obj.ratedpower;
+  dustbin[col].textContent = obj.dustbincapacity;
+  suction[col].textContent = obj.suction;
+  runtime[col].textContent = obj.runtime;
+}
 
 
 // ** Menu top buttons
 // toggle list visibility and rotate chevron
-
 menuTopButtons.forEach(el => {
   el.addEventListener('click', function() {
     this.nextElementSibling.classList.toggle('displayNone');
@@ -165,96 +251,7 @@ menus.forEach(el => {
 })
 
 
-// ** Menu list buttons
-// select vacuum and add approval mark
-
-function selectVacuum() {
-  // remove any approval mark
-  const listItems = this.parentElement.parentElement.children;
-  Array.from(listItems).forEach(elem => elem.firstElementChild.firstElementChild.classList.add('displayNone'));
-  // add approval mark to selected item
-  this.firstElementChild.classList.remove('displayNone');
-  // hide menu list
-  this.parentElement.parentElement.classList.add('displayNone');
-  // in menu top button window show name of the selected vacuum 
-  const vacuumName = this.textContent;
-  this.parentElement.parentElement.previousElementSibling.firstChild.textContent = vacuumName;
-
-  // find selected object
-  selectedVacuumObject = devices.filter(el => el.name === vacuumName);
-
-
-  // populate features
-  // clear previous value first 
-  // ***
-
-  /*
-  const volumeValue = document.createElement('span');
-  volumeValue.textContent = selectedVacuumObject[0].volume;
-  volumeValue.classList.add('comp__grid-column-2');
-  volumeFeature.appendChild(volumeValue);
-  */
-
-  // jeżeli funkcja selectVacuum_1 a może uda się selectVacuum(1) to 
-  // wszystim ficzerom z kolumny 1 (comp__feature-exists--1) które jeszcze nie mają klasy 'hideCompareFeature' tę klasę nadajemy
-  // a później usuwamy klasę 'hideCompareFeature' z tych ficzerów które w tym egzemplarzu istnieją (tu wybieramy je po id chyba, id które ma końcówkę --1)
-  // ficzery tekstowe wypełniamy tekstem nowym
-  
-  
-
-}
-
-// do rozbudowy patrz wyżej instrukcje
-function handleFeatures_1() {
-  featuresColumn_1.forEach(el => el.classList.add('hideCompareFeature'));
-  ifFeaturesExist(0);
-  populateFeatures(0);
-}
-
-function handleFeatures_2() {
-  featuresColumn_2.forEach(el => el.classList.add('hideCompareFeature'));
-  ifFeaturesExist(1);
-  populateFeatures(1);
-}
-
-function handleFeatures_3() {
-  featuresColumn_3.forEach(el => el.classList.add('hideCompareFeature'));
-  ifFeaturesExist(2);
-  populateFeatures(2);
-}
-
-
-// show approval mark if vacuum has that feature
-function ifFeaturesExist(i) {
-  if (selectedVacuumObject[0].roomselectivecleaning === true) {
-    roomSelectiveCleaning[i].classList.remove('hideCompareFeature');
-  }
-  if (selectedVacuumObject[0].roomselectivecleaning === true) {
-    intelligentZoning[i].classList.remove('hideCompareFeature');
-  }
-  if (selectedVacuumObject[0].roomselectivecleaning === true) {
-    filterDetection[i].classList.remove('hideCompareFeature');
-  }
-}
-
-
-// fill with value
-function populateFeatures(i) {
-  battery[i].textContent = selectedVacuumObject[0].batterycapacity;
-  volume[i].textContent = selectedVacuumObject[0].volume;
-  area[i].textContent = selectedVacuumObject[0].suitablearea;
-  power[i].textContent = selectedVacuumObject[0].ratedpower;
-  dustbin[i].textContent = selectedVacuumObject[0].dustbincapacity;
-  suction[i].textContent = selectedVacuumObject[0].suction;
-  runtime[i].textContent = selectedVacuumObject[0].runtime;
-}
-
-
-
-
-
 // ** Show/hide question mark tooltip **
-
 questionMarks.forEach(el => {
   el.addEventListener('click', function() {
     this.firstElementChild.classList.toggle('displayNone');
