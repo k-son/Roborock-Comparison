@@ -2,6 +2,8 @@
   "devices": [
     {
       "name": "Roborock E4",
+      "image": "./img/e4.png",
+      "webpage": "https://roborock-poland.pl/e4.html",
       "navigation": "Interial guidance",
       "algorithm": "Interial guidance",
       "volume": 66,
@@ -17,6 +19,8 @@
     },
     {
       "name": "Roborock S6 MaxV",
+      "image": "./img/s6maxv.png",
+      "webpage": "https://roborock-poland.pl/s6maxv.html",
       "navigation": "Dual-CAM + LDS",
       "algorithm": "SLAM",
       "volume": 64,
@@ -32,6 +36,8 @@
     },
     {
       "name": "Roborock S6",
+      "image": "./img/s6.png",
+      "webpage": "https://roborock-poland.pl/s6.html",
       "navigation": "LDS",
       "algorithm": "SLAM",
       "volume": 64,
@@ -47,6 +53,8 @@
     },
     {
       "name": "Roborock S5 Max",
+      "image": "./img/s5max.png",
+      "webpage": "https://roborock-poland.pl/s5max.html",
       "navigation": "LDS",
       "algorithm": "SLAM",
       "volume": 67,
@@ -62,6 +70,8 @@
     },
     {
       "name": "Roborock S6 Pure",
+      "image": "./img/s6pure.png",
+      "webpage": "https://roborock-poland.pl/s6pure.html",
       "navigation": "LDS",
       "algorithm": "SLAM",
       "volume": 67,
@@ -77,6 +87,8 @@
     },
     {
       "name": "Roborock S5",
+      "image": "./img/s.png",
+      "webpage": "https://roborock-poland.pl/s5.html",
       "navigation": "LDS",
       "algorithm": "SLAM",
       "volume": 69,
