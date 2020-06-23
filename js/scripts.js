@@ -16,6 +16,7 @@ let selectedVacuumObject; // to store just selected (from menu list) vacuum obje
 const featuresColumn_1 = document.querySelectorAll('.comp__feature-exists--1');
 const featuresColumn_2 = document.querySelectorAll('.comp__feature-exists--2');
 const featuresColumn_3 = document.querySelectorAll('.comp__feature-exists--3');
+const featuresColumn = [featuresColumn_1, featuresColumn_2, featuresColumn_3];
 
 // features' fields
 const image_1 = document.getElementById('comp__vacuums__image--1');
@@ -192,8 +193,8 @@ function selectVacuum() {
   // jesli to bedzie ostatni model, to wybierz pierwszy
 
 }
-
-function noDuplicatedVacuums() {
+/*
+function noDuplicatedVacuums(colSelect, colReplace_A, colReplace_B) {
   const selectedVaccumName_1 = document.querySelector('.comp__menu--1 .comp__menu__top-btn').textContent;
   const selectedVaccumName_2 = document.querySelector('.comp__menu--2 .comp__menu__top-btn').textContent;
   const selectedVaccumName_3 = document.querySelector('.comp__menu--3 .comp__menu__top-btn').textContent;
@@ -224,10 +225,70 @@ function noDuplicatedVacuums() {
     menuTopButtons[1].nextElementSibling.children[selectecVacuumIndex].firstElementChild.lastElementChild.classList.add('displayNone');
     menuTopButtons[1].nextElementSibling.children[replaceVacuumIndex].firstElementChild.lastElementChild.classList.remove('displayNone');
   }
-
-
 }
+*/
 
+function noDuplicatedVacuums(colSelect, colReplace_A, colReplace_B) {
+  const selectedVaccumName_1 = document.querySelector('.comp__menu--1 .comp__menu__top-btn').textContent;
+  const selectedVaccumName_2 = document.querySelector('.comp__menu--2 .comp__menu__top-btn').textContent;
+  const selectedVaccumName_3 = document.querySelector('.comp__menu--3 .comp__menu__top-btn').textContent;
+  selectecVacuumNames = [selectedVaccumName_1, selectedVaccumName_2, selectedVaccumName_3];
+
+  const menuList_1_Buttons = document.querySelectorAll('.comp__menu__list--1 button');
+  const menuList_2_Buttons = document.querySelectorAll('.comp__menu__list--2 button');
+  const menuList_3_Buttons = document.querySelectorAll('.comp__menu__list--3 button');
+  const menuListButtons = [menuList_1_Buttons, menuList_2_Buttons, menuList_3_Buttons];
+
+  if (selectecVacuumNames[colSelect] === selectecVacuumNames[colReplace_A]) {
+    const menuListVacuumNames = [];
+    menuListButtons[colReplace_A].forEach(el => menuListVacuumNames.push(el.textContent));
+    
+    // find index of the next vacuum on the list
+    const selectecVacuumIndex = menuListVacuumNames.indexOf(selectecVacuumNames[colSelect]); 
+    let replaceVacuumIndex;
+    if ((selectecVacuumIndex !== (menuListVacuumNames.length - 1)) && (menuListVacuumNames.length > 2)) {
+      replaceVacuumIndex = selectecVacuumIndex + 1;
+    } else if (selectecVacuumIndex === (menuListVacuumNames.length - 1)) {
+      replaceVacuumIndex = 0;
+    }
+    
+    // show replacing vacuum image, name, link, existing features and values
+    featuresColumn[colReplace_A].forEach(el => el.classList.add('hideCompareFeature'));
+    showSelectedVacuum(colReplace_A, devices[replaceVacuumIndex]);
+    ifFeaturesExist(colReplace_A, devices[replaceVacuumIndex]);
+    populateFeatures(colReplace_A, devices[replaceVacuumIndex]);
+
+    // in menu top button show replacing vacuum name and approval mark next to it
+    menuTopButtons[colReplace_A].firstChild.textContent = devices[replaceVacuumIndex].name;
+    menuTopButtons[colReplace_A].nextElementSibling.children[selectecVacuumIndex].firstElementChild.lastElementChild.classList.add('displayNone');
+    menuTopButtons[colReplace_A].nextElementSibling.children[replaceVacuumIndex].firstElementChild.lastElementChild.classList.remove('displayNone');
+  }
+
+  if (selectecVacuumNames[colSelect] === selectecVacuumNames[colReplace_B]) {
+    const menuListVacuumNames = [];
+    menuListButtons[colReplace_B].forEach(el => menuListVacuumNames.push(el.textContent));
+    
+    // find index of the next vacuum on the list
+    const selectecVacuumIndex = menuListVacuumNames.indexOf(selectecVacuumNames[colSelect]); 
+    let replaceVacuumIndex;
+    if ((selectecVacuumIndex !== (menuListVacuumNames.length - 1)) && (menuListVacuumNames.length > 2)) {
+      replaceVacuumIndex = selectecVacuumIndex + 1;
+    } else if (selectecVacuumIndex === (menuListVacuumNames.length - 1)) {
+      replaceVacuumIndex = 0;
+    }
+    
+    // show replacing vacuum image, name, link, existing features and values
+    featuresColumn[colReplace_B].forEach(el => el.classList.add('hideCompareFeature'));
+    showSelectedVacuum(colReplace_B, devices[replaceVacuumIndex]);
+    ifFeaturesExist(colReplace_B, devices[replaceVacuumIndex]);
+    populateFeatures(colReplace_B, devices[replaceVacuumIndex]);
+
+    // in menu top button show replacing vacuum name and approval mark next to it
+    menuTopButtons[colReplace_B].firstChild.textContent = devices[replaceVacuumIndex].name;
+    menuTopButtons[colReplace_B].nextElementSibling.children[selectecVacuumIndex].firstElementChild.lastElementChild.classList.add('displayNone');
+    menuTopButtons[colReplace_B].nextElementSibling.children[replaceVacuumIndex].firstElementChild.lastElementChild.classList.remove('displayNone');
+  }
+}
 
 
 function handleFeatures_1() {
@@ -235,7 +296,7 @@ function handleFeatures_1() {
   showSelectedVacuum(0, selectedVacuumObject[0]);
   ifFeaturesExist(0, selectedVacuumObject[0]);
   populateFeatures(0, selectedVacuumObject[0]);
-  noDuplicatedVacuums();
+  noDuplicatedVacuums(0, 1, 2);
 }
 
 function handleFeatures_2() {
@@ -243,6 +304,7 @@ function handleFeatures_2() {
   showSelectedVacuum(1, selectedVacuumObject[0]);
   ifFeaturesExist(1, selectedVacuumObject[0]);
   populateFeatures(1, selectedVacuumObject[0]);
+  noDuplicatedVacuums(1, 0, 2);
 }
 
 function handleFeatures_3() {
@@ -250,6 +312,7 @@ function handleFeatures_3() {
   showSelectedVacuum(2, selectedVacuumObject[0]);
   ifFeaturesExist(2, selectedVacuumObject[0]);
   populateFeatures(2, selectedVacuumObject[0]);
+  noDuplicatedVacuums(2, 0, 1);
 }
 
 
