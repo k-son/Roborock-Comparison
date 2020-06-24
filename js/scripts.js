@@ -18,6 +18,13 @@ const featuresColumn_2 = document.querySelectorAll('.comp__feature-exists--2');
 const featuresColumn_3 = document.querySelectorAll('.comp__feature-exists--3');
 const featuresColumn = [featuresColumn_1, featuresColumn_2, featuresColumn_3];
 
+const colorsColumn_1 = document.querySelectorAll('.comp__available-colors--1');
+const colorsColumn_2 = document.querySelectorAll('.comp__available-colors--2');
+const colorsColumn_3 = document.querySelectorAll('.comp__available-colors--3');
+const colorsColumn = [colorsColumn_1, colorsColumn_2, colorsColumn_3];
+
+
+
 // features' fields
 const image_1 = document.getElementById('comp__vacuums__image--1');
 const image_2 = document.getElementById('comp__vacuums__image--2');
@@ -33,6 +40,74 @@ const linkURL_1 = document.getElementById('comp__vacuums__more-btn--1');
 const linkURL_2 = document.getElementById('comp__vacuums__more-btn--2');
 const linkURL_3 = document.getElementById('comp__vacuums__more-btn--3');
 const linkURL = [linkURL_1, linkURL_2, linkURL_3];
+
+const adaptiveRouteAlgorithm_1 = document.getElementById('adaptiveRouteAlgorithm--1');
+const adaptiveRouteAlgorithm_2 = document.getElementById('adaptiveRouteAlgorithm--2');
+const adaptiveRouteAlgorithm_3 = document.getElementById('adaptiveRouteAlgorithm--3');
+const adaptiveRouteAlgorithm = [adaptiveRouteAlgorithm_1, adaptiveRouteAlgorithm_2, adaptiveRouteAlgorithm_3];
+
+const selectiveRoomCleaning_1 = document.getElementById('selectiveRoomCleaning--1');
+const selectiveRoomCleaning_2 = document.getElementById('selectiveRoomCleaning--2');
+const selectiveRoomCleaning_3 = document.getElementById('selectiveRoomCleaning--3');
+const selectiveRoomCleaning = [selectiveRoomCleaning_1, selectiveRoomCleaning_2, selectiveRoomCleaning_3];
+
+const ldsLaserNavigation_1 = document.getElementById('ldsLaserNavigation--1');
+const ldsLaserNavigation_2 = document.getElementById('ldsLaserNavigation--2');
+const ldsLaserNavigation_3 = document.getElementById('ldsLaserNavigation--3');
+const ldsLaserNavigation = [ldsLaserNavigation_1, ldsLaserNavigation_2, ldsLaserNavigation_3];
+
+const highPrecisionMap_1 = document.getElementById('highPrecisionMap--1');
+const highPrecisionMap_2 = document.getElementById('highPrecisionMap--2');
+const highPrecisionMap_3 = document.getElementById('highPrecisionMap--3');
+const highPrecisionMap = [highPrecisionMap_1, highPrecisionMap_2, highPrecisionMap_3];
+
+const mapSaving_1 = document.getElementById('mapSaving--1');
+const mapSaving_2 = document.getElementById('mapSaving--2');
+const mapSaving_3 = document.getElementById('mapSaving--3');
+const mapSaving = [mapSaving_1, mapSaving_2, mapSaving_3];
+
+const multipleMapSaving_1 = document.getElementById('multipleMapSaving--1');
+const multipleMapSaving_2 = document.getElementById('multipleMapSaving--2');
+const multipleMapSaving_3 = document.getElementById('multipleMapSaving--3');
+const multipleMapSaving = [multipleMapSaving_1, multipleMapSaving_2, multipleMapSaving_3];
+
+const zoneCleanup_1 = document.getElementById('zoneCleanup--1');
+const zoneCleanup_2 = document.getElementById('zoneCleanup--2');
+const zoneCleanup_3 = document.getElementById('zoneCleanup--3');
+const zoneCleanup = [zoneCleanup_1, zoneCleanup_2, zoneCleanup_3];
+
+const realTimeRobotLocation_1 = document.getElementById('realTimeRobotLocation--1');
+const realTimeRobotLocation_2 = document.getElementById('realTimeRobotLocation--2');
+const realTimeRobotLocation_3 = document.getElementById('realTimeRobotLocation--3');
+const realTimeRobotLocation = [realTimeRobotLocation_1, realTimeRobotLocation_2, realTimeRobotLocation_3];
+
+const appControl_1 = document.getElementById('appControl--1');
+const appControl_2 = document.getElementById('appControl--2');
+const appControl_3 = document.getElementById('appControl--3');
+const appControl = [appControl_1, appControl_2, appControl_3];
+
+const voiceControl_1 = document.getElementById('voiceControl--1');
+const voiceControl_2 = document.getElementById('voiceControl--2');
+const voiceControl_3 = document.getElementById('voiceControl--3');
+const voiceControl = [voiceControl_1, voiceControl_2, voiceControl_3];
+
+const color_1_white = document.getElementById('color--1--white');
+const color_1_pink = document.getElementById('color--1--pink');
+const color_1_black = document.getElementById('color--1--black');
+const color_2_white = document.getElementById('color--2--white');
+const color_2_pink = document.getElementById('color--2--pink');
+const color_2_black = document.getElementById('color--2--black');
+const color_3_white = document.getElementById('color--3--white');
+const color_3_pink = document.getElementById('color--3--pink');
+const color_3_black = document.getElementById('color--3--black');
+const color_1 = [color_1_white, color_1_pink, color_1_black];
+const color_2 = [color_2_white, color_2_pink, color_2_black];
+const color_3 = [color_3_white, color_3_pink, color_3_black];
+const color = [color_1, color_2, color_3];
+
+
+
+
 
 const battery_1 = document.getElementById('battery-1');
 const battery_2 = document.getElementById('battery-2');
@@ -69,20 +144,6 @@ const runtime_2 = document.getElementById('runtime-2');
 const runtime_3 = document.getElementById('runtime-3');
 const runtime = [runtime_1, runtime_2, runtime_3];
 
-const roomSelectiveCleaning_1 = document.getElementById('roomSelectiveCleaning--1');
-const roomSelectiveCleaning_2 = document.getElementById('roomSelectiveCleaning--2');
-const roomSelectiveCleaning_3 = document.getElementById('roomSelectiveCleaning--3');
-const roomSelectiveCleaning = [roomSelectiveCleaning_1, roomSelectiveCleaning_2, roomSelectiveCleaning_3];
-
-const intelligentZoning_1 = document.getElementById('intelligentZoning--1');
-const intelligentZoning_2 = document.getElementById('intelligentZoning--2');
-const intelligentZoning_3 = document.getElementById('intelligentZoning--3');
-const intelligentZoning = [intelligentZoning_1, intelligentZoning_2, intelligentZoning_3];
-
-const filterDetection_1 = document.getElementById('filterDetection--1');
-const filterDetection_2 = document.getElementById('filterDetection--2');
-const filterDetection_3 = document.getElementById('filterDetection--3');
-const filterDetection = [filterDetection_1, filterDetection_2, filterDetection_3];
 
 
 //// MAIN SCRIPTS
@@ -189,6 +250,7 @@ function selectVacuum() {
 
 function handleFeatures_1() {
   featuresColumn_1.forEach(el => el.classList.add('hideCompareFeature'));
+  color_1.forEach(el => el.classList.add('hideCompareFeature'));
   showSelectedVacuum(0, selectedVacuumObject[0]);
   ifFeaturesExist(0, selectedVacuumObject[0]);
   populateFeatures(0, selectedVacuumObject[0]);
@@ -197,6 +259,7 @@ function handleFeatures_1() {
 
 function handleFeatures_2() {
   featuresColumn_2.forEach(el => el.classList.add('hideCompareFeature'));
+  color_2.forEach(el => el.classList.add('hideCompareFeature'));
   showSelectedVacuum(1, selectedVacuumObject[0]);
   ifFeaturesExist(1, selectedVacuumObject[0]);
   populateFeatures(1, selectedVacuumObject[0]);
@@ -205,6 +268,7 @@ function handleFeatures_2() {
 
 function handleFeatures_3() {
   featuresColumn_3.forEach(el => el.classList.add('hideCompareFeature'));
+  color_3.forEach(el => el.classList.add('hideCompareFeature'));
   showSelectedVacuum(2, selectedVacuumObject[0]);
   ifFeaturesExist(2, selectedVacuumObject[0]);
   populateFeatures(2, selectedVacuumObject[0]);
@@ -225,14 +289,45 @@ function showSelectedVacuum(col, obj) {
 
 // * show approval mark if vacuum has that feature *
 function ifFeaturesExist(col, obj) {
-  if (obj.roomselectivecleaning === true) {
-    roomSelectiveCleaning[col].classList.remove('hideCompareFeature');
+  if (obj.adaptiveroutealgorithm === true) {
+    adaptiveRouteAlgorithm[col].classList.remove('hideCompareFeature');
   }
-  if (obj.roomselectivecleaning === true) {
-    intelligentZoning[col].classList.remove('hideCompareFeature');
+  if (obj.selectiveroomcleaning === true) {
+    selectiveRoomCleaning[col].classList.remove('hideCompareFeature');
   }
-  if (obj.roomselectivecleaning === true) {
-    filterDetection[col].classList.remove('hideCompareFeature');
+  if (obj.ldslasernavigation === true) {
+    ldsLaserNavigation[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.highprecisionmap === true) {
+    highPrecisionMap[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.mapsaving === true) {
+    mapSaving[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.multiplemapssaving === true) {
+    multipleMapSaving[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.zonecleanup === true) {
+    zoneCleanup[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.realtimerobotlocation === true) {
+    realTimeRobotLocation[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.appcontrol === true) {
+    appControl[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.voicecontrol === true) {
+    voiceControl[col].classList.remove('hideCompareFeature');
+  }
+  // * colors *
+  if (obj.color.includes("white")) {
+    color[col][0].classList.remove('hideCompareFeature');
+  }
+  if (obj.color.includes("pink")) {
+    color[col][1].classList.remove('hideCompareFeature');
+  }
+  if (obj.color.includes("black")) {
+    color[col][2].classList.remove('hideCompareFeature');
   }
 }
 
@@ -345,6 +440,7 @@ function noDuplicatedVacuums(colSelect, colReplace_A, colReplace_B) {
 
   function showReplacingVacuum(col, index) {
     featuresColumn[col].forEach(el => el.classList.add('hideCompareFeature'));
+    color[col].forEach(el => el.classList.add('hideCompareFeature'));
     showSelectedVacuum(col, devices[index]);
     ifFeaturesExist(col, devices[index]);
     populateFeatures(col, devices[index]);
