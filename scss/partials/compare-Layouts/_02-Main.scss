@@ -397,11 +397,17 @@
   }
 
   &__feature-text {
-    font-size: 2.4rem;
+    font-size: 2rem;
     font-weight: 300;
     justify-self: center;
 
     &__unit {
+      color: #696969;
+    }
+
+    &__more-than {
+      position: relative;
+      bottom: 2px;
       color: #696969;
     }
   }
