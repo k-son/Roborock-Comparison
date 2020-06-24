@@ -18,12 +18,6 @@ const featuresColumn_2 = document.querySelectorAll('.comp__feature-exists--2');
 const featuresColumn_3 = document.querySelectorAll('.comp__feature-exists--3');
 const featuresColumn = [featuresColumn_1, featuresColumn_2, featuresColumn_3];
 
-const colorsColumn_1 = document.querySelectorAll('.comp__available-colors--1');
-const colorsColumn_2 = document.querySelectorAll('.comp__available-colors--2');
-const colorsColumn_3 = document.querySelectorAll('.comp__available-colors--3');
-const colorsColumn = [colorsColumn_1, colorsColumn_2, colorsColumn_3];
-
-
 
 // features' fields
 const image_1 = document.getElementById('comp__vacuums__image--1');
@@ -105,43 +99,124 @@ const color_2 = [color_2_white, color_2_pink, color_2_black];
 const color_3 = [color_3_white, color_3_pink, color_3_black];
 const color = [color_1, color_2, color_3];
 
+const dualElectronicCompasses_1 = document.getElementById('dualElectronicCompasses--1');
+const dualElectronicCompasses_2 = document.getElementById('dualElectronicCompasses--2');
+const dualElectronicCompasses_3 = document.getElementById('dualElectronicCompasses--3');
+const dualElectronicCompasses = [dualElectronicCompasses_1, dualElectronicCompasses_2, dualElectronicCompasses_3];
 
+const inertialNavigation_1 = document.getElementById('inertialNavigation--1');
+const inertialNavigation_2 = document.getElementById('inertialNavigation--2');
+const inertialNavigation_3 = document.getElementById('inertialNavigation--3');
+const inertialNavigation = [inertialNavigation_1, inertialNavigation_2, inertialNavigation_3];
 
+const cliffSensor_1 = document.getElementById('cliffSensor--1');
+const cliffSensor_2 = document.getElementById('cliffSensor--2');
+const cliffSensor_3 = document.getElementById('cliffSensor--3');
+const cliffSensor = [cliffSensor_1, cliffSensor_2, cliffSensor_3];
 
+const obstacleRecognition_1 = document.getElementById('obstacleRecognition--1');
+const obstacleRecognition_2 = document.getElementById('obstacleRecognition--2');
+const obstacleRecognition_3 = document.getElementById('obstacleRecognition--3');
+const obstacleRecognition = [obstacleRecognition_1, obstacleRecognition_2, obstacleRecognition_3];
 
-const battery_1 = document.getElementById('battery-1');
-const battery_2 = document.getElementById('battery-2');
-const battery_3 = document.getElementById('battery-3');
-const battery = [battery_1, battery_2, battery_3];
+const moppingFunction_1 = document.getElementById('moppingFunction--1');
+const moppingFunction_2 = document.getElementById('moppingFunction--2');
+const moppingFunction_3 = document.getElementById('moppingFunction--3');
+const moppingFunction = [moppingFunction_1, moppingFunction_2, moppingFunction_3];
 
-const volume_1 = document.getElementById('volume-1');
-const volume_2 = document.getElementById('volume-2');
-const volume_3 = document.getElementById('volume-3');
-const volume = [volume_1, volume_2, volume_3];
+const carpetBoostMode_1 = document.getElementById('carpetBoostMode--1');
+const carpetBoostMode_2 = document.getElementById('carpetBoostMode--2');
+const carpetBoostMode_3 = document.getElementById('carpetBoostMode--3');
+const carpetBoostMode = [carpetBoostMode_1, carpetBoostMode_2, carpetBoostMode_3];
 
-const area_1 = document.getElementById('area-1');
-const area_2 = document.getElementById('area-2');
-const area_3 = document.getElementById('area-3');
-const area = [area_1, area_2, area_3];
+const customizedWaterAndSuctionOfRoom_1 = document.getElementById('customizedWaterAndSuctionOfRoom--1');
+const customizedWaterAndSuctionOfRoom_2 = document.getElementById('customizedWaterAndSuctionOfRoom--2');
+const customizedWaterAndSuctionOfRoom_3 = document.getElementById('customizedWaterAndSuctionOfRoom--3');
+const customizedWaterAndSuctionOfRoom = [customizedWaterAndSuctionOfRoom_1, customizedWaterAndSuctionOfRoom_2, customizedWaterAndSuctionOfRoom_3];
 
-const power_1 = document.getElementById('power-1');
-const power_2 = document.getElementById('power-2');
-const power_3 = document.getElementById('power-3');
-const power = [power_1, power_2, power_3];
+const autoRecharg_1 = document.getElementById('autoRecharg--1');
+const autoRecharg_2 = document.getElementById('autoRecharg--2');
+const autoRecharg_3 = document.getElementById('autoRecharg--3');
+const autoRecharg = [autoRecharg_1, autoRecharg_2, autoRecharg_3];
 
-const dustbin_1 = document.getElementById('dustbin-1');
-const dustbin_2 = document.getElementById('dustbin-2');
-const dustbin_3 = document.getElementById('dustbin-3');
-const dustbin = [dustbin_1, dustbin_2, dustbin_3];
+const topupCharging_1 = document.getElementById('topupCharging--1');
+const topupCharging_2 = document.getElementById('topupCharging--2');
+const topupCharging_3 = document.getElementById('topupCharging--3');
+const topupCharging = [topupCharging_1, topupCharging_2, topupCharging_3];
 
-const suction_1 = document.getElementById('suction-1');
-const suction_2 = document.getElementById('suction-2');
-const suction_3 = document.getElementById('suction-3');
+const overTheAirUpgrades_1 = document.getElementById('overTheAirUpgrades--1');
+const overTheAirUpgrades_2 = document.getElementById('overTheAirUpgrades--2');
+const overTheAirUpgrades_3 = document.getElementById('overTheAirUpgrades--3');
+const overTheAirUpgrades = [overTheAirUpgrades_1, overTheAirUpgrades_2, overTheAirUpgrades_3];
+
+const doNotDisturb_1 = document.getElementById('doNotDisturb--1');
+const doNotDisturb_2 = document.getElementById('doNotDisturb--2');
+const doNotDisturb_3 = document.getElementById('doNotDisturb--3');
+const doNotDisturb = [doNotDisturb_1, doNotDisturb_2, doNotDisturb_3];
+
+const wifiConnectivity_1 = document.getElementById('wifiConnectivity--1');
+const wifiConnectivity_2 = document.getElementById('wifiConnectivity--2');
+const wifiConnectivity_3 = document.getElementById('wifiConnectivity--3');
+const wifiConnectivity = [wifiConnectivity_1, wifiConnectivity_2, wifiConnectivity_3];
+
+const voicePack_1 = document.getElementById('voicePack--1');
+const voicePack_2 = document.getElementById('voicePack--2');
+const voicePack_3 = document.getElementById('voicePack--3');
+const voicePack = [voicePack_1, voicePack_2, voicePack_3];
+
+const washableDustbin_1 = document.getElementById('washableDustbin--1');
+const washableDustbin_2 = document.getElementById('washableDustbin--2');
+const washableDustbin_3 = document.getElementById('washableDustbin--3');
+const washableDustbin = [washableDustbin_1, washableDustbin_2, washableDustbin_3];
+
+const washableE11AirFilter_1 = document.getElementById('washableE11AirFilter--1');
+const washableE11AirFilter_2 = document.getElementById('washableE11AirFilter--2');
+const washableE11AirFilter_3 = document.getElementById('washableE11AirFilter--3');
+const washableE11AirFilter = [washableE11AirFilter_1, washableE11AirFilter_2, washableE11AirFilter_3];
+
+const volumeBalanceMode_1 = document.getElementById('volumeBalanceMode--1');
+const volumeBalanceMode_2 = document.getElementById('volumeBalanceMode--2');
+const volumeBalanceMode_3 = document.getElementById('volumeBalanceMode--3');
+const volumeBalanceMode = [volumeBalanceMode_1, volumeBalanceMode_2, volumeBalanceMode_3];
+
+const volumeQuietMode_1 = document.getElementById('volumeQuietMode--1');
+const volumeQuietMode_2 = document.getElementById('volumeQuietMode--2');
+const volumeQuietMode_3 = document.getElementById('volumeQuietMode--3');
+const volumeQuietMode = [volumeQuietMode_1, volumeQuietMode_2, volumeQuietMode_3];
+
+const batteryCapacity_1 = document.getElementById('batteryCapacity--1');
+const batteryCapacity_2 = document.getElementById('batteryCapacity--2');
+const batteryCapacity_3 = document.getElementById('batteryCapacity--3');
+const batteryCapacity = [batteryCapacity_1, batteryCapacity_2, batteryCapacity_3];
+
+const suitableArea_1 = document.getElementById('suitableArea--1');
+const suitableArea_2 = document.getElementById('suitableArea--2');
+const suitableArea_3 = document.getElementById('suitableArea--3');
+const suitableArea = [suitableArea_1, suitableArea_2, suitableArea_3];
+
+const ratedPower_1 = document.getElementById('ratedPower--1');
+const ratedPower_2 = document.getElementById('ratedPower--2');
+const ratedPower_3 = document.getElementById('ratedPower--3');
+const ratedPower = [ratedPower_1, ratedPower_2, ratedPower_3];
+
+const dustbinVolume_1 = document.getElementById('dustbinVolume--1');
+const dustbinVolume_2 = document.getElementById('dustbinVolume--2');
+const dustbinVolume_3 = document.getElementById('dustbinVolume--3');
+const dustbinVolume = [dustbinVolume_1, dustbinVolume_2, dustbinVolume_3];
+
+const waterTankCapacity_1 = document.getElementById('waterTankCapacity--1');
+const waterTankCapacity_2 = document.getElementById('waterTankCapacity--2');
+const waterTankCapacity_3 = document.getElementById('waterTankCapacity--3');
+const waterTankCapacity = [waterTankCapacity_1, waterTankCapacity_2, waterTankCapacity_3];
+
+const suction_1 = document.getElementById('suction--1');
+const suction_2 = document.getElementById('suction--2');
+const suction_3 = document.getElementById('suction--3');
 const suction = [suction_1, suction_2, suction_3];
 
-const runtime_1 = document.getElementById('runtime-1');
-const runtime_2 = document.getElementById('runtime-2');
-const runtime_3 = document.getElementById('runtime-3');
+const runtime_1 = document.getElementById('runtime--1');
+const runtime_2 = document.getElementById('runtime--2');
+const runtime_3 = document.getElementById('runtime--3');
 const runtime = [runtime_1, runtime_2, runtime_3];
 
 
@@ -319,7 +394,7 @@ function ifFeaturesExist(col, obj) {
   if (obj.voicecontrol === true) {
     voiceControl[col].classList.remove('hideCompareFeature');
   }
-  // * colors *
+  // colors
   if (obj.color.includes("white")) {
     color[col][0].classList.remove('hideCompareFeature');
   }
@@ -329,16 +404,62 @@ function ifFeaturesExist(col, obj) {
   if (obj.color.includes("black")) {
     color[col][2].classList.remove('hideCompareFeature');
   }
+  // end of color
+  if (obj.dualelectroniccompasses === true) {
+    dualElectronicCompasses[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.inertialnavigation === true) {
+    inertialNavigation[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.obstaclerecognition === true) {
+    obstacleRecognition[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.moppingfunction === true) {
+    moppingFunction[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.carpetboostmode === true) {
+    carpetBoostMode[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.customizedwaterandsuctionofroom === true) {
+    customizedWaterAndSuctionOfRoom[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.autorecharge === true) {
+    autoRecharg[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.topupcharging === true) {
+    topupCharging[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.overtheairupgrades === true) {
+    overTheAirUpgrades[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.donotdisturb === true) {
+    doNotDisturb[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.donotdisturb === true) {
+    wifiConnectivity[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.voicepack === true) {
+    voicePack[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.washabledustbin === true) {
+    washableDustbin[col].classList.remove('hideCompareFeature');
+  }
+  if (obj.washablee11airfilter === true) {
+    washableE11AirFilter[col].classList.remove('hideCompareFeature');
+  }
 }
 
 
 // * fill properties with values *
 function populateFeatures(col, obj) {
-  battery[col].textContent = obj.batterycapacity;
-  volume[col].textContent = obj.volume;
-  area[col].textContent = obj.suitablearea;
-  power[col].textContent = obj.ratedpower;
-  dustbin[col].textContent = obj.dustbincapacity;
+  cliffSensor[col].textContent = obj.cliffsensor;
+  volumeBalanceMode[col].textContent = obj.volumebalancemode;
+  volumeQuietMode[col].textContent = obj.volumequietmode;
+  batteryCapacity[col].textContent = obj.batterycapacity;
+  suitableArea[col].textContent = obj.suitablearea;
+  ratedPower[col].textContent = obj.ratedpower;
+  dustbinVolume[col].textContent = obj.dustbinvolume;
+  waterTankCapacity[col].textContent = obj.watertankcapacity;
   suction[col].textContent = obj.suction;
   runtime[col].textContent = obj.runtime;
 }
