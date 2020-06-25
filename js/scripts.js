@@ -1,3 +1,5 @@
+"use strict";
+
 //// VARIABLES
 
 const menus = document.querySelectorAll('.comp__menu');
