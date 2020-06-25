@@ -6,6 +6,8 @@ const menuTopButtons = document.querySelectorAll('.comp__menu__top-btn');
 const menuList_1 = document.querySelector('.comp__menu__list--1');
 const menuList_2 = document.querySelector('.comp__menu__list--2');
 const menuList_3 = document.querySelector('.comp__menu__list--3');
+
+const featureTitles = document.querySelectorAll('.comp__feature-title');
 const questionMarks = document.querySelectorAll('.comp__feature-title__question-mark');
 
 let devices; // vacuum objects from json file
@@ -595,9 +597,19 @@ menus.forEach(el => {
 
 
 /// SHOW/HIDE QUESTION MARK TOOLTIP
-questionMarks.forEach(el => {
+featureTitles.forEach(el => {
   el.addEventListener('click', function() {
-    this.firstElementChild.classList.toggle('displayNone');
+    if (this.lastElementChild.firstElementChild) {
+      this.lastElementChild.firstElementChild.classList.toggle('displayNone');
+    }
+  })
+})
+
+featureTitles.forEach(el => {
+  el.addEventListener('mouseleave', function() {
+    if (this.lastElementChild.firstElementChild) {
+      this.lastElementChild.firstElementChild.classList.add('displayNone');
+    }
   })
 })
 
