@@ -627,5 +627,5 @@
       this.firstElementChild.classList.add('displayNone');
     })
   })
-  
+
 })();
