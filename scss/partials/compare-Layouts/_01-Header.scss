@@ -1,21 +1,33 @@
 .comp__header {
+  position: relative;
   height: 28rem;
   width: 100%;
-  background-image: url(../img/compare-header.jpg);
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  text-align: center;
+  background-image: url(../img/compare.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right center;
+  color: #dedede;
+  background-color: #07060b;
+  border-radius: 2px;
 
   @media only screen and (max-width: 500px) {
     height: 16rem;
   }
 
   &__text {
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    transform: translateY(-50%);
     padding: 3.2rem;
+
+    @media only screen and (max-width: $bp-large) {
+      left: 5%;
+    }
+
+    @media only screen and (max-width: 700px) {
+      left: 0%;
+    }
     
     & h1 {
       font-size: 4rem;
