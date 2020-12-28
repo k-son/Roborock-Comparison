@@ -6,9 +6,6 @@
   const menus = document.querySelectorAll('.comp__menu');
   const menuLists = document.querySelectorAll('.comp__menu__list');
   const menuTopButtons = document.querySelectorAll('.comp__menu__top-btn');
-  const menuList_1 = document.querySelector('.comp__menu__list--1');
-  const menuList_2 = document.querySelector('.comp__menu__list--2');
-  const menuList_3 = document.querySelector('.comp__menu__list--3');
   
   const featureTitles = document.querySelectorAll('.comp__feature-title');
   const questionMarks = document.querySelectorAll('.comp__feature-title__question-mark');
@@ -228,35 +225,36 @@
   
   //// MAIN SCRIPTS
   
-  /// RETRIVE JSON
-  let requestURL = 'https://roborock-compare.k-son.eu/roborock_compare.json';
-  let request = new XMLHttpRequest();
-  request.open('GET', requestURL);
-  request.responseType = 'json';
-  request.send();
-  
-  
-  
-  /// ONLOAD ACTIONS
-  request.onload = function() {
-    const roborockCompareObject = request.response;
-  
-    buildMenus(roborockCompareObject);
-  
-    // in menu top button show vacuum name and, next to it, approval mark
-    for (let i=0; i<menuTopButtons.length; i++) {
-      menuTopButtons[i].firstChild.textContent = devices[i].name;
-      menuTopButtons[i].nextElementSibling.children[i].firstElementChild.lastElementChild.classList.remove('displayNone');
-    }
-  
-    // show vacuum features
-    for (let i=0; i<=2; i++) {
-      showSelectedVacuum(i, devices[i]);
-      ifFeaturesExist(i, devices[i]);
-      populateFeatures(i, devices[i]);
-    }
+  /// RETRIVE JSON AND ONLOAD ACTIONS
+  async function getData() {
+    const response = await fetch('https://roborock-compare.k-son.eu/roborock_compare.json');
+    const data = await response.json();
+    return data;
   }
-  
+
+  getData()
+    .then(res => {
+      buildMenus(res);
+    })
+    .then(() => {
+      for (let i=0; i<=2; i++) {
+        showSelectedVacuum(i, devices[i]);
+        ifFeaturesExist(i, devices[i]);
+        populateFeatures(i, devices[i]);
+      }
+    })
+    .then(() => {
+      // in menu top button show vacuum name and, next to it, approval mark
+      for (let i=0; i<menuTopButtons.length; i++) {
+        menuTopButtons[i].firstChild.textContent = devices[i].name;
+        menuTopButtons[i].nextElementSibling.children[i].firstElementChild.lastElementChild.classList.remove('displayNone');
+      }
+    })
+    .catch(e => {
+      console.log('Error: ', e);
+      alert('\nWystąpił błąd przy pobieraniu danych.\nSpróbuj odświeżyć stronę.');
+    });
+
   
   
   /// BUILD DROPDOWN MENUS
