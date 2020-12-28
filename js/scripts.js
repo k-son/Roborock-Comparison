@@ -225,7 +225,7 @@
   
   //// MAIN SCRIPTS
   
-  /// RETRIVE JSON AND ONLOAD ACTIONS
+  /// RETRIVE JSON AND STARTER ACTIONS
   async function getData() {
     const response = await fetch('https://roborock-compare.k-son.eu/roborock_compare.json');
     const data = await response.json();
