@@ -1,224 +1,222 @@
 (function () {
   "use strict"; //// VARIABLES
 
-  var menus = document.querySelectorAll('.comp__menu');
-  var menuLists = document.querySelectorAll('.comp__menu__list');
-  var menuTopButtons = document.querySelectorAll('.comp__menu__top-btn');
-  var menuList_1 = document.querySelector('.comp__menu__list--1');
-  var menuList_2 = document.querySelector('.comp__menu__list--2');
-  var menuList_3 = document.querySelector('.comp__menu__list--3');
-  var featureTitles = document.querySelectorAll('.comp__feature-title');
-  var questionMarks = document.querySelectorAll('.comp__feature-title__question-mark');
-  var devices; // vacuum objects from json file
+  const menus = document.querySelectorAll('.comp__menu');
+  const menuLists = document.querySelectorAll('.comp__menu__list');
+  const menuTopButtons = document.querySelectorAll('.comp__menu__top-btn');
+  const featureTitles = document.querySelectorAll('.comp__feature-title');
+  const questionMarks = document.querySelectorAll('.comp__feature-title__question-mark');
+  let devices; // vacuum objects from json file
 
-  var selectecVacuumName; // name of just selected vacuum
+  let selectecVacuumName; // name of just selected vacuum
 
-  var selectedVacuumObject; // to store just selected (from menu list) vacuum object
+  let selectedVacuumObject; // to store just selected (from menu list) vacuum object
 
-  var featuresColumn_1 = document.querySelectorAll('.comp__feature-exists--1');
-  var featuresColumn_2 = document.querySelectorAll('.comp__feature-exists--2');
-  var featuresColumn_3 = document.querySelectorAll('.comp__feature-exists--3');
-  var featuresColumn = [featuresColumn_1, featuresColumn_2, featuresColumn_3]; // features' fields
+  const featuresColumn_1 = document.querySelectorAll('.comp__feature-exists--1');
+  const featuresColumn_2 = document.querySelectorAll('.comp__feature-exists--2');
+  const featuresColumn_3 = document.querySelectorAll('.comp__feature-exists--3');
+  const featuresColumn = [featuresColumn_1, featuresColumn_2, featuresColumn_3]; // features' fields
 
-  var image_1 = document.getElementById('comp__vacuums__image--1');
-  var image_2 = document.getElementById('comp__vacuums__image--2');
-  var image_3 = document.getElementById('comp__vacuums__image--3');
-  var image = [image_1, image_2, image_3];
-  var vacName_1 = document.getElementById('comp__vacuums__h2--1');
-  var vacName_2 = document.getElementById('comp__vacuums__h2--2');
-  var vacName_3 = document.getElementById('comp__vacuums__h2--3');
-  var vacName = [vacName_1, vacName_2, vacName_3];
-  var linkURL_1 = document.getElementById('comp__vacuums__more-btn--1');
-  var linkURL_2 = document.getElementById('comp__vacuums__more-btn--2');
-  var linkURL_3 = document.getElementById('comp__vacuums__more-btn--3');
-  var linkURL = [linkURL_1, linkURL_2, linkURL_3];
-  var adaptiveRouteAlgorithm_1 = document.getElementById('adaptiveRouteAlgorithm--1');
-  var adaptiveRouteAlgorithm_2 = document.getElementById('adaptiveRouteAlgorithm--2');
-  var adaptiveRouteAlgorithm_3 = document.getElementById('adaptiveRouteAlgorithm--3');
-  var adaptiveRouteAlgorithm = [adaptiveRouteAlgorithm_1, adaptiveRouteAlgorithm_2, adaptiveRouteAlgorithm_3];
-  var selectiveRoomCleaning_1 = document.getElementById('selectiveRoomCleaning--1');
-  var selectiveRoomCleaning_2 = document.getElementById('selectiveRoomCleaning--2');
-  var selectiveRoomCleaning_3 = document.getElementById('selectiveRoomCleaning--3');
-  var selectiveRoomCleaning = [selectiveRoomCleaning_1, selectiveRoomCleaning_2, selectiveRoomCleaning_3];
-  var ldsLaserNavigation_1 = document.getElementById('ldsLaserNavigation--1');
-  var ldsLaserNavigation_2 = document.getElementById('ldsLaserNavigation--2');
-  var ldsLaserNavigation_3 = document.getElementById('ldsLaserNavigation--3');
-  var ldsLaserNavigation = [ldsLaserNavigation_1, ldsLaserNavigation_2, ldsLaserNavigation_3];
-  var highPrecisionMap_1 = document.getElementById('highPrecisionMap--1');
-  var highPrecisionMap_2 = document.getElementById('highPrecisionMap--2');
-  var highPrecisionMap_3 = document.getElementById('highPrecisionMap--3');
-  var highPrecisionMap = [highPrecisionMap_1, highPrecisionMap_2, highPrecisionMap_3];
-  var mapSaving_1 = document.getElementById('mapSaving--1');
-  var mapSaving_2 = document.getElementById('mapSaving--2');
-  var mapSaving_3 = document.getElementById('mapSaving--3');
-  var mapSaving = [mapSaving_1, mapSaving_2, mapSaving_3];
-  var multipleMapSaving_1 = document.getElementById('multipleMapSaving--1');
-  var multipleMapSaving_2 = document.getElementById('multipleMapSaving--2');
-  var multipleMapSaving_3 = document.getElementById('multipleMapSaving--3');
-  var multipleMapSaving = [multipleMapSaving_1, multipleMapSaving_2, multipleMapSaving_3];
-  var zoneCleanup_1 = document.getElementById('zoneCleanup--1');
-  var zoneCleanup_2 = document.getElementById('zoneCleanup--2');
-  var zoneCleanup_3 = document.getElementById('zoneCleanup--3');
-  var zoneCleanup = [zoneCleanup_1, zoneCleanup_2, zoneCleanup_3];
-  var realTimeRobotLocation_1 = document.getElementById('realTimeRobotLocation--1');
-  var realTimeRobotLocation_2 = document.getElementById('realTimeRobotLocation--2');
-  var realTimeRobotLocation_3 = document.getElementById('realTimeRobotLocation--3');
-  var realTimeRobotLocation = [realTimeRobotLocation_1, realTimeRobotLocation_2, realTimeRobotLocation_3];
-  var appControl_1 = document.getElementById('appControl--1');
-  var appControl_2 = document.getElementById('appControl--2');
-  var appControl_3 = document.getElementById('appControl--3');
-  var appControl = [appControl_1, appControl_2, appControl_3];
-  var voiceControl_1 = document.getElementById('voiceControl--1');
-  var voiceControl_2 = document.getElementById('voiceControl--2');
-  var voiceControl_3 = document.getElementById('voiceControl--3');
-  var voiceControl = [voiceControl_1, voiceControl_2, voiceControl_3];
-  var color_1_white = document.getElementById('color--1--white');
-  var color_1_pink = document.getElementById('color--1--pink');
-  var color_1_black = document.getElementById('color--1--black');
-  var color_2_white = document.getElementById('color--2--white');
-  var color_2_pink = document.getElementById('color--2--pink');
-  var color_2_black = document.getElementById('color--2--black');
-  var color_3_white = document.getElementById('color--3--white');
-  var color_3_pink = document.getElementById('color--3--pink');
-  var color_3_black = document.getElementById('color--3--black');
-  var color_1 = [color_1_white, color_1_pink, color_1_black];
-  var color_2 = [color_2_white, color_2_pink, color_2_black];
-  var color_3 = [color_3_white, color_3_pink, color_3_black];
-  var color = [color_1, color_2, color_3];
-  var dualElectronicCompasses_1 = document.getElementById('dualElectronicCompasses--1');
-  var dualElectronicCompasses_2 = document.getElementById('dualElectronicCompasses--2');
-  var dualElectronicCompasses_3 = document.getElementById('dualElectronicCompasses--3');
-  var dualElectronicCompasses = [dualElectronicCompasses_1, dualElectronicCompasses_2, dualElectronicCompasses_3];
-  var inertialNavigation_1 = document.getElementById('inertialNavigation--1');
-  var inertialNavigation_2 = document.getElementById('inertialNavigation--2');
-  var inertialNavigation_3 = document.getElementById('inertialNavigation--3');
-  var inertialNavigation = [inertialNavigation_1, inertialNavigation_2, inertialNavigation_3];
-  var cliffSensor_1 = document.getElementById('cliffSensor--1');
-  var cliffSensor_2 = document.getElementById('cliffSensor--2');
-  var cliffSensor_3 = document.getElementById('cliffSensor--3');
-  var cliffSensor = [cliffSensor_1, cliffSensor_2, cliffSensor_3];
-  var obstacleRecognition_1 = document.getElementById('obstacleRecognition--1');
-  var obstacleRecognition_2 = document.getElementById('obstacleRecognition--2');
-  var obstacleRecognition_3 = document.getElementById('obstacleRecognition--3');
-  var obstacleRecognition = [obstacleRecognition_1, obstacleRecognition_2, obstacleRecognition_3];
-  var moppingFunction_1 = document.getElementById('moppingFunction--1');
-  var moppingFunction_2 = document.getElementById('moppingFunction--2');
-  var moppingFunction_3 = document.getElementById('moppingFunction--3');
-  var moppingFunction = [moppingFunction_1, moppingFunction_2, moppingFunction_3];
-  var carpetBoostMode_1 = document.getElementById('carpetBoostMode--1');
-  var carpetBoostMode_2 = document.getElementById('carpetBoostMode--2');
-  var carpetBoostMode_3 = document.getElementById('carpetBoostMode--3');
-  var carpetBoostMode = [carpetBoostMode_1, carpetBoostMode_2, carpetBoostMode_3];
-  var customizedWaterAndSuctionOfRoom_1 = document.getElementById('customizedWaterAndSuctionOfRoom--1');
-  var customizedWaterAndSuctionOfRoom_2 = document.getElementById('customizedWaterAndSuctionOfRoom--2');
-  var customizedWaterAndSuctionOfRoom_3 = document.getElementById('customizedWaterAndSuctionOfRoom--3');
-  var customizedWaterAndSuctionOfRoom = [customizedWaterAndSuctionOfRoom_1, customizedWaterAndSuctionOfRoom_2, customizedWaterAndSuctionOfRoom_3];
-  var autoRecharg_1 = document.getElementById('autoRecharg--1');
-  var autoRecharg_2 = document.getElementById('autoRecharg--2');
-  var autoRecharg_3 = document.getElementById('autoRecharg--3');
-  var autoRecharg = [autoRecharg_1, autoRecharg_2, autoRecharg_3];
-  var topupCharging_1 = document.getElementById('topupCharging--1');
-  var topupCharging_2 = document.getElementById('topupCharging--2');
-  var topupCharging_3 = document.getElementById('topupCharging--3');
-  var topupCharging = [topupCharging_1, topupCharging_2, topupCharging_3];
-  var overTheAirUpgrades_1 = document.getElementById('overTheAirUpgrades--1');
-  var overTheAirUpgrades_2 = document.getElementById('overTheAirUpgrades--2');
-  var overTheAirUpgrades_3 = document.getElementById('overTheAirUpgrades--3');
-  var overTheAirUpgrades = [overTheAirUpgrades_1, overTheAirUpgrades_2, overTheAirUpgrades_3];
-  var doNotDisturb_1 = document.getElementById('doNotDisturb--1');
-  var doNotDisturb_2 = document.getElementById('doNotDisturb--2');
-  var doNotDisturb_3 = document.getElementById('doNotDisturb--3');
-  var doNotDisturb = [doNotDisturb_1, doNotDisturb_2, doNotDisturb_3];
-  var wifiConnectivity_1 = document.getElementById('wifiConnectivity--1');
-  var wifiConnectivity_2 = document.getElementById('wifiConnectivity--2');
-  var wifiConnectivity_3 = document.getElementById('wifiConnectivity--3');
-  var wifiConnectivity = [wifiConnectivity_1, wifiConnectivity_2, wifiConnectivity_3];
-  var voicePack_1 = document.getElementById('voicePack--1');
-  var voicePack_2 = document.getElementById('voicePack--2');
-  var voicePack_3 = document.getElementById('voicePack--3');
-  var voicePack = [voicePack_1, voicePack_2, voicePack_3];
-  var washableDustbin_1 = document.getElementById('washableDustbin--1');
-  var washableDustbin_2 = document.getElementById('washableDustbin--2');
-  var washableDustbin_3 = document.getElementById('washableDustbin--3');
-  var washableDustbin = [washableDustbin_1, washableDustbin_2, washableDustbin_3];
-  var washableE11AirFilter_1 = document.getElementById('washableE11AirFilter--1');
-  var washableE11AirFilter_2 = document.getElementById('washableE11AirFilter--2');
-  var washableE11AirFilter_3 = document.getElementById('washableE11AirFilter--3');
-  var washableE11AirFilter = [washableE11AirFilter_1, washableE11AirFilter_2, washableE11AirFilter_3];
-  var volumeBalanceMode_1 = document.getElementById('volumeBalanceMode--1');
-  var volumeBalanceMode_2 = document.getElementById('volumeBalanceMode--2');
-  var volumeBalanceMode_3 = document.getElementById('volumeBalanceMode--3');
-  var volumeBalanceMode = [volumeBalanceMode_1, volumeBalanceMode_2, volumeBalanceMode_3];
-  var volumeQuietMode_1 = document.getElementById('volumeQuietMode--1');
-  var volumeQuietMode_2 = document.getElementById('volumeQuietMode--2');
-  var volumeQuietMode_3 = document.getElementById('volumeQuietMode--3');
-  var volumeQuietMode = [volumeQuietMode_1, volumeQuietMode_2, volumeQuietMode_3];
-  var batteryCapacity_1 = document.getElementById('batteryCapacity--1');
-  var batteryCapacity_2 = document.getElementById('batteryCapacity--2');
-  var batteryCapacity_3 = document.getElementById('batteryCapacity--3');
-  var batteryCapacity = [batteryCapacity_1, batteryCapacity_2, batteryCapacity_3];
-  var suitableArea_1 = document.getElementById('suitableArea--1');
-  var suitableArea_2 = document.getElementById('suitableArea--2');
-  var suitableArea_3 = document.getElementById('suitableArea--3');
-  var suitableArea = [suitableArea_1, suitableArea_2, suitableArea_3];
-  var ratedPower_1 = document.getElementById('ratedPower--1');
-  var ratedPower_2 = document.getElementById('ratedPower--2');
-  var ratedPower_3 = document.getElementById('ratedPower--3');
-  var ratedPower = [ratedPower_1, ratedPower_2, ratedPower_3];
-  var dustbinVolume_1 = document.getElementById('dustbinVolume--1');
-  var dustbinVolume_2 = document.getElementById('dustbinVolume--2');
-  var dustbinVolume_3 = document.getElementById('dustbinVolume--3');
-  var dustbinVolume = [dustbinVolume_1, dustbinVolume_2, dustbinVolume_3];
-  var waterTankCapacity_1 = document.getElementById('waterTankCapacity--1');
-  var waterTankCapacity_2 = document.getElementById('waterTankCapacity--2');
-  var waterTankCapacity_3 = document.getElementById('waterTankCapacity--3');
-  var waterTankCapacity = [waterTankCapacity_1, waterTankCapacity_2, waterTankCapacity_3];
-  var suction_1 = document.getElementById('suction--1');
-  var suction_2 = document.getElementById('suction--2');
-  var suction_3 = document.getElementById('suction--3');
-  var suction = [suction_1, suction_2, suction_3];
-  var runtime_1 = document.getElementById('runtime--1');
-  var runtime_2 = document.getElementById('runtime--2');
-  var runtime_3 = document.getElementById('runtime--3');
-  var runtime = [runtime_1, runtime_2, runtime_3]; //// MAIN SCRIPTS
-  /// RETRIVE JSON
+  const image_1 = document.getElementById('comp__vacuums__image--1');
+  const image_2 = document.getElementById('comp__vacuums__image--2');
+  const image_3 = document.getElementById('comp__vacuums__image--3');
+  const image = [image_1, image_2, image_3];
+  const vacName_1 = document.getElementById('comp__vacuums__h2--1');
+  const vacName_2 = document.getElementById('comp__vacuums__h2--2');
+  const vacName_3 = document.getElementById('comp__vacuums__h2--3');
+  const vacName = [vacName_1, vacName_2, vacName_3];
+  const linkURL_1 = document.getElementById('comp__vacuums__more-btn--1');
+  const linkURL_2 = document.getElementById('comp__vacuums__more-btn--2');
+  const linkURL_3 = document.getElementById('comp__vacuums__more-btn--3');
+  const linkURL = [linkURL_1, linkURL_2, linkURL_3];
+  const adaptiveRouteAlgorithm_1 = document.getElementById('adaptiveRouteAlgorithm--1');
+  const adaptiveRouteAlgorithm_2 = document.getElementById('adaptiveRouteAlgorithm--2');
+  const adaptiveRouteAlgorithm_3 = document.getElementById('adaptiveRouteAlgorithm--3');
+  const adaptiveRouteAlgorithm = [adaptiveRouteAlgorithm_1, adaptiveRouteAlgorithm_2, adaptiveRouteAlgorithm_3];
+  const selectiveRoomCleaning_1 = document.getElementById('selectiveRoomCleaning--1');
+  const selectiveRoomCleaning_2 = document.getElementById('selectiveRoomCleaning--2');
+  const selectiveRoomCleaning_3 = document.getElementById('selectiveRoomCleaning--3');
+  const selectiveRoomCleaning = [selectiveRoomCleaning_1, selectiveRoomCleaning_2, selectiveRoomCleaning_3];
+  const ldsLaserNavigation_1 = document.getElementById('ldsLaserNavigation--1');
+  const ldsLaserNavigation_2 = document.getElementById('ldsLaserNavigation--2');
+  const ldsLaserNavigation_3 = document.getElementById('ldsLaserNavigation--3');
+  const ldsLaserNavigation = [ldsLaserNavigation_1, ldsLaserNavigation_2, ldsLaserNavigation_3];
+  const highPrecisionMap_1 = document.getElementById('highPrecisionMap--1');
+  const highPrecisionMap_2 = document.getElementById('highPrecisionMap--2');
+  const highPrecisionMap_3 = document.getElementById('highPrecisionMap--3');
+  const highPrecisionMap = [highPrecisionMap_1, highPrecisionMap_2, highPrecisionMap_3];
+  const mapSaving_1 = document.getElementById('mapSaving--1');
+  const mapSaving_2 = document.getElementById('mapSaving--2');
+  const mapSaving_3 = document.getElementById('mapSaving--3');
+  const mapSaving = [mapSaving_1, mapSaving_2, mapSaving_3];
+  const multipleMapSaving_1 = document.getElementById('multipleMapSaving--1');
+  const multipleMapSaving_2 = document.getElementById('multipleMapSaving--2');
+  const multipleMapSaving_3 = document.getElementById('multipleMapSaving--3');
+  const multipleMapSaving = [multipleMapSaving_1, multipleMapSaving_2, multipleMapSaving_3];
+  const zoneCleanup_1 = document.getElementById('zoneCleanup--1');
+  const zoneCleanup_2 = document.getElementById('zoneCleanup--2');
+  const zoneCleanup_3 = document.getElementById('zoneCleanup--3');
+  const zoneCleanup = [zoneCleanup_1, zoneCleanup_2, zoneCleanup_3];
+  const realTimeRobotLocation_1 = document.getElementById('realTimeRobotLocation--1');
+  const realTimeRobotLocation_2 = document.getElementById('realTimeRobotLocation--2');
+  const realTimeRobotLocation_3 = document.getElementById('realTimeRobotLocation--3');
+  const realTimeRobotLocation = [realTimeRobotLocation_1, realTimeRobotLocation_2, realTimeRobotLocation_3];
+  const appControl_1 = document.getElementById('appControl--1');
+  const appControl_2 = document.getElementById('appControl--2');
+  const appControl_3 = document.getElementById('appControl--3');
+  const appControl = [appControl_1, appControl_2, appControl_3];
+  const voiceControl_1 = document.getElementById('voiceControl--1');
+  const voiceControl_2 = document.getElementById('voiceControl--2');
+  const voiceControl_3 = document.getElementById('voiceControl--3');
+  const voiceControl = [voiceControl_1, voiceControl_2, voiceControl_3];
+  const color_1_white = document.getElementById('color--1--white');
+  const color_1_pink = document.getElementById('color--1--pink');
+  const color_1_black = document.getElementById('color--1--black');
+  const color_2_white = document.getElementById('color--2--white');
+  const color_2_pink = document.getElementById('color--2--pink');
+  const color_2_black = document.getElementById('color--2--black');
+  const color_3_white = document.getElementById('color--3--white');
+  const color_3_pink = document.getElementById('color--3--pink');
+  const color_3_black = document.getElementById('color--3--black');
+  const color_1 = [color_1_white, color_1_pink, color_1_black];
+  const color_2 = [color_2_white, color_2_pink, color_2_black];
+  const color_3 = [color_3_white, color_3_pink, color_3_black];
+  const color = [color_1, color_2, color_3];
+  const dualElectronicCompasses_1 = document.getElementById('dualElectronicCompasses--1');
+  const dualElectronicCompasses_2 = document.getElementById('dualElectronicCompasses--2');
+  const dualElectronicCompasses_3 = document.getElementById('dualElectronicCompasses--3');
+  const dualElectronicCompasses = [dualElectronicCompasses_1, dualElectronicCompasses_2, dualElectronicCompasses_3];
+  const inertialNavigation_1 = document.getElementById('inertialNavigation--1');
+  const inertialNavigation_2 = document.getElementById('inertialNavigation--2');
+  const inertialNavigation_3 = document.getElementById('inertialNavigation--3');
+  const inertialNavigation = [inertialNavigation_1, inertialNavigation_2, inertialNavigation_3];
+  const cliffSensor_1 = document.getElementById('cliffSensor--1');
+  const cliffSensor_2 = document.getElementById('cliffSensor--2');
+  const cliffSensor_3 = document.getElementById('cliffSensor--3');
+  const cliffSensor = [cliffSensor_1, cliffSensor_2, cliffSensor_3];
+  const obstacleRecognition_1 = document.getElementById('obstacleRecognition--1');
+  const obstacleRecognition_2 = document.getElementById('obstacleRecognition--2');
+  const obstacleRecognition_3 = document.getElementById('obstacleRecognition--3');
+  const obstacleRecognition = [obstacleRecognition_1, obstacleRecognition_2, obstacleRecognition_3];
+  const moppingFunction_1 = document.getElementById('moppingFunction--1');
+  const moppingFunction_2 = document.getElementById('moppingFunction--2');
+  const moppingFunction_3 = document.getElementById('moppingFunction--3');
+  const moppingFunction = [moppingFunction_1, moppingFunction_2, moppingFunction_3];
+  const carpetBoostMode_1 = document.getElementById('carpetBoostMode--1');
+  const carpetBoostMode_2 = document.getElementById('carpetBoostMode--2');
+  const carpetBoostMode_3 = document.getElementById('carpetBoostMode--3');
+  const carpetBoostMode = [carpetBoostMode_1, carpetBoostMode_2, carpetBoostMode_3];
+  const customizedWaterAndSuctionOfRoom_1 = document.getElementById('customizedWaterAndSuctionOfRoom--1');
+  const customizedWaterAndSuctionOfRoom_2 = document.getElementById('customizedWaterAndSuctionOfRoom--2');
+  const customizedWaterAndSuctionOfRoom_3 = document.getElementById('customizedWaterAndSuctionOfRoom--3');
+  const customizedWaterAndSuctionOfRoom = [customizedWaterAndSuctionOfRoom_1, customizedWaterAndSuctionOfRoom_2, customizedWaterAndSuctionOfRoom_3];
+  const autoRecharg_1 = document.getElementById('autoRecharg--1');
+  const autoRecharg_2 = document.getElementById('autoRecharg--2');
+  const autoRecharg_3 = document.getElementById('autoRecharg--3');
+  const autoRecharg = [autoRecharg_1, autoRecharg_2, autoRecharg_3];
+  const topupCharging_1 = document.getElementById('topupCharging--1');
+  const topupCharging_2 = document.getElementById('topupCharging--2');
+  const topupCharging_3 = document.getElementById('topupCharging--3');
+  const topupCharging = [topupCharging_1, topupCharging_2, topupCharging_3];
+  const overTheAirUpgrades_1 = document.getElementById('overTheAirUpgrades--1');
+  const overTheAirUpgrades_2 = document.getElementById('overTheAirUpgrades--2');
+  const overTheAirUpgrades_3 = document.getElementById('overTheAirUpgrades--3');
+  const overTheAirUpgrades = [overTheAirUpgrades_1, overTheAirUpgrades_2, overTheAirUpgrades_3];
+  const doNotDisturb_1 = document.getElementById('doNotDisturb--1');
+  const doNotDisturb_2 = document.getElementById('doNotDisturb--2');
+  const doNotDisturb_3 = document.getElementById('doNotDisturb--3');
+  const doNotDisturb = [doNotDisturb_1, doNotDisturb_2, doNotDisturb_3];
+  const wifiConnectivity_1 = document.getElementById('wifiConnectivity--1');
+  const wifiConnectivity_2 = document.getElementById('wifiConnectivity--2');
+  const wifiConnectivity_3 = document.getElementById('wifiConnectivity--3');
+  const wifiConnectivity = [wifiConnectivity_1, wifiConnectivity_2, wifiConnectivity_3];
+  const voicePack_1 = document.getElementById('voicePack--1');
+  const voicePack_2 = document.getElementById('voicePack--2');
+  const voicePack_3 = document.getElementById('voicePack--3');
+  const voicePack = [voicePack_1, voicePack_2, voicePack_3];
+  const washableDustbin_1 = document.getElementById('washableDustbin--1');
+  const washableDustbin_2 = document.getElementById('washableDustbin--2');
+  const washableDustbin_3 = document.getElementById('washableDustbin--3');
+  const washableDustbin = [washableDustbin_1, washableDustbin_2, washableDustbin_3];
+  const washableE11AirFilter_1 = document.getElementById('washableE11AirFilter--1');
+  const washableE11AirFilter_2 = document.getElementById('washableE11AirFilter--2');
+  const washableE11AirFilter_3 = document.getElementById('washableE11AirFilter--3');
+  const washableE11AirFilter = [washableE11AirFilter_1, washableE11AirFilter_2, washableE11AirFilter_3];
+  const volumeBalanceMode_1 = document.getElementById('volumeBalanceMode--1');
+  const volumeBalanceMode_2 = document.getElementById('volumeBalanceMode--2');
+  const volumeBalanceMode_3 = document.getElementById('volumeBalanceMode--3');
+  const volumeBalanceMode = [volumeBalanceMode_1, volumeBalanceMode_2, volumeBalanceMode_3];
+  const volumeQuietMode_1 = document.getElementById('volumeQuietMode--1');
+  const volumeQuietMode_2 = document.getElementById('volumeQuietMode--2');
+  const volumeQuietMode_3 = document.getElementById('volumeQuietMode--3');
+  const volumeQuietMode = [volumeQuietMode_1, volumeQuietMode_2, volumeQuietMode_3];
+  const batteryCapacity_1 = document.getElementById('batteryCapacity--1');
+  const batteryCapacity_2 = document.getElementById('batteryCapacity--2');
+  const batteryCapacity_3 = document.getElementById('batteryCapacity--3');
+  const batteryCapacity = [batteryCapacity_1, batteryCapacity_2, batteryCapacity_3];
+  const suitableArea_1 = document.getElementById('suitableArea--1');
+  const suitableArea_2 = document.getElementById('suitableArea--2');
+  const suitableArea_3 = document.getElementById('suitableArea--3');
+  const suitableArea = [suitableArea_1, suitableArea_2, suitableArea_3];
+  const ratedPower_1 = document.getElementById('ratedPower--1');
+  const ratedPower_2 = document.getElementById('ratedPower--2');
+  const ratedPower_3 = document.getElementById('ratedPower--3');
+  const ratedPower = [ratedPower_1, ratedPower_2, ratedPower_3];
+  const dustbinVolume_1 = document.getElementById('dustbinVolume--1');
+  const dustbinVolume_2 = document.getElementById('dustbinVolume--2');
+  const dustbinVolume_3 = document.getElementById('dustbinVolume--3');
+  const dustbinVolume = [dustbinVolume_1, dustbinVolume_2, dustbinVolume_3];
+  const waterTankCapacity_1 = document.getElementById('waterTankCapacity--1');
+  const waterTankCapacity_2 = document.getElementById('waterTankCapacity--2');
+  const waterTankCapacity_3 = document.getElementById('waterTankCapacity--3');
+  const waterTankCapacity = [waterTankCapacity_1, waterTankCapacity_2, waterTankCapacity_3];
+  const suction_1 = document.getElementById('suction--1');
+  const suction_2 = document.getElementById('suction--2');
+  const suction_3 = document.getElementById('suction--3');
+  const suction = [suction_1, suction_2, suction_3];
+  const runtime_1 = document.getElementById('runtime--1');
+  const runtime_2 = document.getElementById('runtime--2');
+  const runtime_3 = document.getElementById('runtime--3');
+  const runtime = [runtime_1, runtime_2, runtime_3]; //// MAIN SCRIPTS
+  /// RETRIVE JSON AND STARTER ACTIONS
 
-  var requestURL = 'https://roborock-compare.k-son.eu/roborock_compare.json';
-  var request = new XMLHttpRequest();
-  request.open('GET', requestURL);
-  request.responseType = 'json';
-  request.send(); /// ONLOAD ACTIONS
+  async function getData() {
+    const response = await fetch('https://roborock-compare.k-son.eu/roborock_compare.json');
+    const data = await response.json();
+    return data;
+  }
 
-  request.onload = function () {
-    var roborockCompareObject = request.response;
-    buildMenus(roborockCompareObject); // in menu top button show vacuum name and, next to it, approval mark
-
-    for (var i = 0; i < menuTopButtons.length; i++) {
+  getData().then(res => {
+    buildMenus(res);
+  }).then(() => {
+    for (let i = 0; i <= 2; i++) {
+      showSelectedVacuum(i, devices[i]);
+      ifFeaturesExist(i, devices[i]);
+      populateFeatures(i, devices[i]);
+    }
+  }).then(() => {
+    // in menu top button show vacuum name and, next to it, approval mark
+    for (let i = 0; i < menuTopButtons.length; i++) {
       menuTopButtons[i].firstChild.textContent = devices[i].name;
       menuTopButtons[i].nextElementSibling.children[i].firstElementChild.lastElementChild.classList.remove('displayNone');
-    } // show vacuum features
-
-
-    for (var _i = 0; _i <= 2; _i++) {
-      showSelectedVacuum(_i, devices[_i]);
-      ifFeaturesExist(_i, devices[_i]);
-      populateFeatures(_i, devices[_i]);
     }
-  }; /// BUILD DROPDOWN MENUS
-
+  }).catch(e => {
+    console.log('Error: ', e);
+    alert('\nWystąpił błąd przy pobieraniu danych.\nSpróbuj odświeżyć stronę.');
+  }); /// BUILD DROPDOWN MENUS
 
   function buildMenus(obj) {
     devices = obj.devices; // devices array containing all vacuums objects, retrived from roborock_compare.json
     // build menus
 
-    for (var i = 0; i < menuLists.length; i++) {
-      for (var j = 0; j < devices.length; j++) {
-        var listItem = document.createElement('li');
+    for (let i = 0; i < menuLists.length; i++) {
+      for (let j = 0; j < devices.length; j++) {
+        const listItem = document.createElement('li');
         listItem.classList.add('comp__menu__list-item');
-        var button = document.createElement('button');
+        const button = document.createElement('button');
         button.classList.add('comp__menu__btn');
         button.textContent = devices[j].name;
-        var span = document.createElement('span');
+        const span = document.createElement('span');
         span.classList.add('comp__selected-vacuum');
         span.classList.add('displayNone');
         button.appendChild(span);
@@ -228,18 +226,18 @@
     } // retrive menus' buttons and attach event listeners to them
 
 
-    var menu_1_ListButtons = document.querySelectorAll('.comp__menu--1 .comp__menu__btn');
-    var menu_2_ListButtons = document.querySelectorAll('.comp__menu--2 .comp__menu__btn');
-    var menu_3_ListButtons = document.querySelectorAll('.comp__menu--3 .comp__menu__btn');
-    menu_1_ListButtons.forEach(function (el) {
+    const menu_1_ListButtons = document.querySelectorAll('.comp__menu--1 .comp__menu__btn');
+    const menu_2_ListButtons = document.querySelectorAll('.comp__menu--2 .comp__menu__btn');
+    const menu_3_ListButtons = document.querySelectorAll('.comp__menu--3 .comp__menu__btn');
+    menu_1_ListButtons.forEach(el => {
       el.addEventListener('click', selectVacuum);
       el.addEventListener('click', handleFeatures_1);
     });
-    menu_2_ListButtons.forEach(function (el) {
+    menu_2_ListButtons.forEach(el => {
       el.addEventListener('click', selectVacuum);
       el.addEventListener('click', handleFeatures_2);
     });
-    menu_3_ListButtons.forEach(function (el) {
+    menu_3_ListButtons.forEach(el => {
       el.addEventListener('click', selectVacuum);
       el.addEventListener('click', handleFeatures_3);
     });
@@ -249,10 +247,8 @@
 
   function selectVacuum() {
     // remove any approval mark
-    var listItems = this.parentElement.parentElement.children;
-    Array.from(listItems).forEach(function (elem) {
-      return elem.firstElementChild.firstElementChild.classList.add('displayNone');
-    }); // add approval mark to selected item
+    const listItems = this.parentElement.parentElement.children;
+    Array.from(listItems).forEach(elem => elem.firstElementChild.firstElementChild.classList.add('displayNone')); // add approval mark to selected item
 
     this.firstElementChild.classList.remove('displayNone'); // hide menu list
 
@@ -261,18 +257,12 @@
     selectecVacuumName = this.textContent;
     this.parentElement.parentElement.previousElementSibling.firstChild.textContent = selectecVacuumName; // find selected object
 
-    selectedVacuumObject = devices.filter(function (el) {
-      return el.name === selectecVacuumName;
-    });
+    selectedVacuumObject = devices.filter(el => el.name === selectecVacuumName);
   }
 
   function handleFeatures_1() {
-    featuresColumn_1.forEach(function (el) {
-      return el.classList.add('hideCompareFeature');
-    });
-    color_1.forEach(function (el) {
-      return el.classList.add('hideCompareFeature');
-    });
+    featuresColumn_1.forEach(el => el.classList.add('hideCompareFeature'));
+    color_1.forEach(el => el.classList.add('hideCompareFeature'));
     showSelectedVacuum(0, selectedVacuumObject[0]);
     ifFeaturesExist(0, selectedVacuumObject[0]);
     populateFeatures(0, selectedVacuumObject[0]);
@@ -280,12 +270,8 @@
   }
 
   function handleFeatures_2() {
-    featuresColumn_2.forEach(function (el) {
-      return el.classList.add('hideCompareFeature');
-    });
-    color_2.forEach(function (el) {
-      return el.classList.add('hideCompareFeature');
-    });
+    featuresColumn_2.forEach(el => el.classList.add('hideCompareFeature'));
+    color_2.forEach(el => el.classList.add('hideCompareFeature'));
     showSelectedVacuum(1, selectedVacuumObject[0]);
     ifFeaturesExist(1, selectedVacuumObject[0]);
     populateFeatures(1, selectedVacuumObject[0]);
@@ -293,12 +279,8 @@
   }
 
   function handleFeatures_3() {
-    featuresColumn_3.forEach(function (el) {
-      return el.classList.add('hideCompareFeature');
-    });
-    color_3.forEach(function (el) {
-      return el.classList.add('hideCompareFeature');
-    });
+    featuresColumn_3.forEach(el => el.classList.add('hideCompareFeature'));
+    color_3.forEach(el => el.classList.add('hideCompareFeature'));
     showSelectedVacuum(2, selectedVacuumObject[0]);
     ifFeaturesExist(2, selectedVacuumObject[0]);
     populateFeatures(2, selectedVacuumObject[0]);
@@ -442,23 +424,21 @@
 
 
   function noDuplicatedVacuums(colSelect, colReplace_A, colReplace_B) {
-    var selectedVaccumName_1 = document.querySelector('.comp__menu--1 .comp__menu__top-btn').textContent;
-    var selectedVaccumName_2 = document.querySelector('.comp__menu--2 .comp__menu__top-btn').textContent;
-    var selectedVaccumName_3 = document.querySelector('.comp__menu--3 .comp__menu__top-btn').textContent;
-    var selectecVacuumNames = [selectedVaccumName_1, selectedVaccumName_2, selectedVaccumName_3];
-    var menuList_1_Buttons = document.querySelectorAll('.comp__menu__list--1 button');
-    var menuList_2_Buttons = document.querySelectorAll('.comp__menu__list--2 button');
-    var menuList_3_Buttons = document.querySelectorAll('.comp__menu__list--3 button');
-    var menuListButtons = [menuList_1_Buttons, menuList_2_Buttons, menuList_3_Buttons]; //// chceck first pair of columns
+    const selectedVaccumName_1 = document.querySelector('.comp__menu--1 .comp__menu__top-btn').textContent;
+    const selectedVaccumName_2 = document.querySelector('.comp__menu--2 .comp__menu__top-btn').textContent;
+    const selectedVaccumName_3 = document.querySelector('.comp__menu--3 .comp__menu__top-btn').textContent;
+    const selectecVacuumNames = [selectedVaccumName_1, selectedVaccumName_2, selectedVaccumName_3];
+    const menuList_1_Buttons = document.querySelectorAll('.comp__menu__list--1 button');
+    const menuList_2_Buttons = document.querySelectorAll('.comp__menu__list--2 button');
+    const menuList_3_Buttons = document.querySelectorAll('.comp__menu__list--3 button');
+    const menuListButtons = [menuList_1_Buttons, menuList_2_Buttons, menuList_3_Buttons]; //// chceck first pair of columns
 
     if (selectecVacuumNames[colSelect] === selectecVacuumNames[colReplace_A]) {
-      var menuListVacuumNames = [];
-      menuListButtons[colReplace_A].forEach(function (el) {
-        return menuListVacuumNames.push(el.textContent);
-      }); // find index of the next vacuum on the list
+      const menuListVacuumNames = [];
+      menuListButtons[colReplace_A].forEach(el => menuListVacuumNames.push(el.textContent)); // find index of the next vacuum on the list
 
-      var selectecVacuumIndex = menuListVacuumNames.indexOf(selectecVacuumNames[colSelect]);
-      var replaceVacuumIndex;
+      const selectecVacuumIndex = menuListVacuumNames.indexOf(selectecVacuumNames[colSelect]);
+      let replaceVacuumIndex;
 
       if (selectecVacuumIndex !== menuListVacuumNames.length - 1 && menuListVacuumNames.length > 2) {
         replaceVacuumIndex = selectecVacuumIndex + 1;
@@ -471,10 +451,10 @@
 
       showReplacingVaccumInTopMenuButton(colReplace_A, replaceVacuumIndex, selectecVacuumIndex); // after replacement, if now colReplace_A is equal to colReplace_B, change vacuum in colReplace_B
 
-      var colReplace_B_VacuumIndex = menuListVacuumNames.indexOf(selectecVacuumNames[colReplace_B]);
+      const colReplace_B_VacuumIndex = menuListVacuumNames.indexOf(selectecVacuumNames[colReplace_B]);
 
       if (colReplace_B_VacuumIndex === replaceVacuumIndex) {
-        var nestedReplaceVacuumIndex;
+        let nestedReplaceVacuumIndex;
 
         if (replaceVacuumIndex !== menuListVacuumNames.length - 1) {
           nestedReplaceVacuumIndex = replaceVacuumIndex + 1;
@@ -491,51 +471,44 @@
 
 
     if (selectecVacuumNames[colSelect] === selectecVacuumNames[colReplace_B]) {
-      var _menuListVacuumNames = [];
-      menuListButtons[colReplace_B].forEach(function (el) {
-        return _menuListVacuumNames.push(el.textContent);
-      }); // find index of the next vacuum on the list
+      const menuListVacuumNames = [];
+      menuListButtons[colReplace_B].forEach(el => menuListVacuumNames.push(el.textContent)); // find index of the next vacuum on the list
 
-      var _selectecVacuumIndex = _menuListVacuumNames.indexOf(selectecVacuumNames[colSelect]);
+      const selectecVacuumIndex = menuListVacuumNames.indexOf(selectecVacuumNames[colSelect]);
+      let replaceVacuumIndex;
 
-      var _replaceVacuumIndex;
-
-      if (_selectecVacuumIndex !== _menuListVacuumNames.length - 1 && _menuListVacuumNames.length > 2) {
-        _replaceVacuumIndex = _selectecVacuumIndex + 1;
-      } else if (_selectecVacuumIndex === _menuListVacuumNames.length - 1) {
-        _replaceVacuumIndex = 0;
+      if (selectecVacuumIndex !== menuListVacuumNames.length - 1 && menuListVacuumNames.length > 2) {
+        replaceVacuumIndex = selectecVacuumIndex + 1;
+      } else if (selectecVacuumIndex === menuListVacuumNames.length - 1) {
+        replaceVacuumIndex = 0;
       } // show replacing vacuum image, name, link, existing features and values
 
 
-      showReplacingVacuum(colReplace_B, _replaceVacuumIndex); // in menu top button show replacing vacuum name and approval mark next to it
+      showReplacingVacuum(colReplace_B, replaceVacuumIndex); // in menu top button show replacing vacuum name and approval mark next to it
 
-      showReplacingVaccumInTopMenuButton(colReplace_B, _replaceVacuumIndex, _selectecVacuumIndex); // after replacement, if now colReplace_B is equal to colReplace_A, change vacuum in colReplace_A
+      showReplacingVaccumInTopMenuButton(colReplace_B, replaceVacuumIndex, selectecVacuumIndex); // after replacement, if now colReplace_B is equal to colReplace_A, change vacuum in colReplace_A
 
-      var colReplace_A_VacuumIndex = _menuListVacuumNames.indexOf(selectecVacuumNames[colReplace_A]);
+      const colReplace_A_VacuumIndex = menuListVacuumNames.indexOf(selectecVacuumNames[colReplace_A]);
 
-      if (colReplace_A_VacuumIndex === _replaceVacuumIndex) {
-        var _nestedReplaceVacuumIndex;
+      if (colReplace_A_VacuumIndex === replaceVacuumIndex) {
+        let nestedReplaceVacuumIndex;
 
-        if (_replaceVacuumIndex !== _menuListVacuumNames.length - 1) {
-          _nestedReplaceVacuumIndex = _replaceVacuumIndex + 1;
+        if (replaceVacuumIndex !== menuListVacuumNames.length - 1) {
+          nestedReplaceVacuumIndex = replaceVacuumIndex + 1;
         } else {
-          _nestedReplaceVacuumIndex = 0;
+          nestedReplaceVacuumIndex = 0;
         } // show replacing vacuum image, name, link, existing features and values
 
 
-        showReplacingVacuum(colReplace_A, _nestedReplaceVacuumIndex); // in menu top button show replacing vacuum name and approval mark next to it
+        showReplacingVacuum(colReplace_A, nestedReplaceVacuumIndex); // in menu top button show replacing vacuum name and approval mark next to it
 
-        showReplacingVaccumInTopMenuButton(colReplace_A, _nestedReplaceVacuumIndex, _replaceVacuumIndex);
+        showReplacingVaccumInTopMenuButton(colReplace_A, nestedReplaceVacuumIndex, replaceVacuumIndex);
       }
     }
 
     function showReplacingVacuum(col, index) {
-      featuresColumn[col].forEach(function (el) {
-        return el.classList.add('hideCompareFeature');
-      });
-      color[col].forEach(function (el) {
-        return el.classList.add('hideCompareFeature');
-      });
+      featuresColumn[col].forEach(el => el.classList.add('hideCompareFeature'));
+      color[col].forEach(el => el.classList.add('hideCompareFeature'));
       showSelectedVacuum(col, devices[index]);
       ifFeaturesExist(col, devices[index]);
       populateFeatures(col, devices[index]);
@@ -550,39 +523,39 @@
   // toggle list visibility and rotate chevron
 
 
-  menuTopButtons.forEach(function (el) {
+  menuTopButtons.forEach(el => {
     el.addEventListener('click', function () {
       this.nextElementSibling.classList.toggle('displayNone');
       this.lastElementChild.classList.toggle('rotateChevron');
     });
   });
-  menus.forEach(function (el) {
+  menus.forEach(el => {
     el.addEventListener('mouseleave', function () {
       this.lastElementChild.classList.add('displayNone');
       this.firstElementChild.lastElementChild.classList.remove('rotateChevron');
     });
   }); /// SHOW/HIDE QUESTION MARK TOOLTIP
 
-  featureTitles.forEach(function (el) {
+  featureTitles.forEach(el => {
     el.addEventListener('click', function () {
       if (this.lastElementChild.firstElementChild) {
         this.lastElementChild.firstElementChild.classList.toggle('displayNone');
       }
     });
   });
-  featureTitles.forEach(function (el) {
+  featureTitles.forEach(el => {
     el.addEventListener('mouseleave', function () {
       if (this.lastElementChild.firstElementChild) {
         this.lastElementChild.firstElementChild.classList.add('displayNone');
       }
     });
   });
-  questionMarks.forEach(function (el) {
+  questionMarks.forEach(el => {
     el.addEventListener('mouseenter', function () {
       this.firstElementChild.classList.remove('displayNone');
     });
   });
-  questionMarks.forEach(function (el) {
+  questionMarks.forEach(el => {
     el.addEventListener('mouseleave', function () {
       this.firstElementChild.classList.add('displayNone');
     });
