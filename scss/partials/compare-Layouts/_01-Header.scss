@@ -1,6 +1,6 @@
 .comp__header {
   position: relative;
-  height: 28rem;
+  height: 16rem;
   width: 100%;
   background-image: url(../img/compare.jpg);
   background-size: contain;
@@ -10,31 +10,31 @@
   background-color: #07060b;
   border-radius: 2px;
 
-  @media only screen and (max-width: 500px) {
-    height: 16rem;
+  @media only screen and (min-width: 500px) {
+    height: 28rem;
   }
 
   &__text {
     position: absolute;
     top: 50%;
-    left: 8%;
+    left: 0;
     transform: translateY(-50%);
     padding: 3.2rem;
 
-    @media only screen and (max-width: $bp-large) {
+    @media only screen and (min-width: 700px) {
       left: 5%;
     }
 
-    @media only screen and (max-width: 700px) {
-      left: 0%;
+    @media only screen and (min-width: $bp-large) {
+      left: 8%;
     }
-    
+
     & h1 {
-      font-size: 4rem;
+      font-size: 2.4rem;
       letter-spacing: 1px;
 
-      @media only screen and (max-width: 500px) {
-        font-size: 2.4rem;
+      @media only screen and (min-width: 500px) {
+        font-size: 4rem;
       }
     }
   }
