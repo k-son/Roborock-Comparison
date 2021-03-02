@@ -1,5 +1,5 @@
 # Roborock Vacuums Comparison
-Vacuums comparison webpage for polish distribution of Roborock devices.
+Vacuums comparison subpage coded for polish distributor of Roborock devices.
 
 
 ## Technologies
